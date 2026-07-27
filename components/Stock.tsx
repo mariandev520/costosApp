@@ -15,7 +15,7 @@ export function Stock() {
           <div className="eyebrow">Stock bajo control</div>
           <h2>Ninguna sorpresa en pleno servicio.</h2>
           <p className="lede">
-            Define un mínimo y un objetivo para cada ingrediente. Coquinaria
+            Define un mínimo y un objetivo para cada ingrediente. CostosApp
             avisa qué está agotado o por debajo del mínimo, y te dice cuánto
             conviene pedir.
           </p>

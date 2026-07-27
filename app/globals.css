@@ -626,8 +626,71 @@ p.lede {
       transparent 55%
     );
   filter: blur(40px);
-  opacity: 0.7;
+  opacity: 0.45;
   pointer-events: none;
+}
+
+/* ---- Photo backdrop (crossfade) ---- */
+.photo-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+}
+.photo-backdrop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: photo-fade 18s ease-in-out infinite;
+}
+.photo-backdrop img:nth-child(1) {
+  animation-delay: 0s;
+}
+.photo-backdrop img:nth-child(2) {
+  animation-delay: 6s;
+}
+.photo-backdrop img:nth-child(3) {
+  animation-delay: 12s;
+}
+@keyframes photo-fade {
+  0% {
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  36% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--paper) 92%, transparent) 0%,
+    color-mix(in srgb, var(--paper) 78%, transparent) 45%,
+    color-mix(in srgb, var(--paper) 55%, transparent) 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-backdrop img {
+    animation: none;
+    opacity: 0;
+  }
+  .photo-backdrop img:first-child {
+    opacity: 1;
+  }
 }
 .hero-enter {
   animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;

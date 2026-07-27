@@ -46,7 +46,7 @@ export function AIFeature() {
         </div>
         <Reveal delay={120} className="mock-wrap">
           <div style={{ flex: 1, minWidth: 220 }}>
-            <span className="mock-label">Foto del albarán</span>
+            <span className="mock-label">Foto del facturas</span>
             <div
               className="receipt"
               style={{
@@ -58,7 +58,7 @@ export function AIFeature() {
                 fontSize: ".8rem",
               }}
             >
-              📄 albaran_proveedor.jpg
+              📄 factura_proveedor.jpg
             </div>
           </div>
           <div className="arrow-between" aria-hidden="true">

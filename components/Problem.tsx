@@ -6,7 +6,7 @@ const items = [
     text: "Un proveedor sube un coste y no te enteras hasta cuadrar caja a fin de mes.",
   },
   {
-    title: "Horas en albaranes",
+    title: "Horas en factura",
     text: "Cargar cada compra a mano te roba tiempo que deberías pasar en la cocina o con tus clientes.",
   },
   {
@@ -24,7 +24,7 @@ export function Problem() {
     <section className="section raised">
       <div className="section-inner">
         <Reveal>
-          <div className="eyebrow">El día a día sin Coquinaria</div>
+          <div className="eyebrow">El día a día sin CostosApp</div>
           <h2>Cada semana se te escapa algo.</h2>
         </Reveal>
         <div className="grid cols-2">
