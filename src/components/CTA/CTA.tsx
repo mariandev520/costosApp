@@ -1,6 +1,7 @@
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
+import styles from "./CTA.module.css";
 
 export function CTA() {
   return (
@@ -16,7 +17,7 @@ export function CTA() {
         </Reveal>
         <Reveal delay={120}>
           <ContactForm />
-          <span className="contact-note">{siteConfig.contactNote}</span>
+          <span className={styles.contactNote}>{siteConfig.contactNote}</span>
         </Reveal>
       </div>
     </section>

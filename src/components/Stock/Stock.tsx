@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/Reveal";
 import type { CSSProperties } from "react";
+import styles from "./Stock.module.css";
 
 const meters = [
   { label: "Harina 000", pct: 72, mark: 30, low: false, val: "18 / 25 kg" },
@@ -24,18 +25,21 @@ export function Stock() {
           <span className="mock-label">
             Ejemplo ilustrativo · nivel actual vs. mínimo
           </span>
-          <div className="meters">
+          <div className={styles.meters}>
             {meters.map((m) => (
-              <div className="meter-row" key={m.label}>
+              <div className={styles.meterRow} key={m.label}>
                 <span>{m.label}</span>
-                <div className="meter-track">
+                <div className={styles.meterTrack}>
                   <div
-                    className={`meter-fill${m.low ? " low" : ""}`}
+                    className={`${styles.meterFill}${m.low ? ` ${styles.meterFillLow}` : ""}`}
                     style={{ "--target-w": `${m.pct}%` } as CSSProperties}
                   />
-                  <div className="meter-mark" style={{ left: `${m.mark}%` }} />
+                  <div
+                    className={styles.meterMark}
+                    style={{ left: `${m.mark}%` }}
+                  />
                 </div>
-                <span className="meter-val">{m.val}</span>
+                <span className={styles.meterVal}>{m.val}</span>
               </div>
             ))}
           </div>

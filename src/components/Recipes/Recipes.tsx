@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import styles from "./Recipes.module.css";
 
 export function Recipes() {
   return (
@@ -20,25 +21,25 @@ export function Recipes() {
           </Reveal>
           <Reveal delay={120}>
             <span className="mock-label">Ejemplo ilustrativo</span>
-            <div className="cost-card">
-              <div className="dish">Risotto de hongos</div>
-              <div className="row">
+            <div className={styles.costCard}>
+              <div className={styles.dish}>Risotto de hongos</div>
+              <div className={styles.row}>
                 <span>Coste materia prima</span>
                 <span>3,10€</span>
               </div>
-              <div className="row">
+              <div className={styles.row}>
                 <span>Gastos generales</span>
                 <span>0,90€</span>
               </div>
-              <div className="row">
+              <div className={styles.row}>
                 <span>IVA (10%)</span>
                 <span>0,64€</span>
               </div>
-              <div className="row final">
+              <div className={`${styles.row} ${styles.rowFinal}`}>
                 <span>Precio de venta</span>
                 <span>12,50€</span>
               </div>
-              <div className="margin">Margen: 68%</div>
+              <div className={styles.margin}>Margen: 68%</div>
             </div>
           </Reveal>
         </div>

@@ -1,0 +1,390 @@
+/* ================================================================
+   DESIGN TOKENS
+   ================================================================ */
+:root {
+  --ink: #16211c;
+  --ink-soft: #4b564e;
+  --paper: #ffffff;
+  --paper-raised: #ffffff;
+  --accent: #c97a22;
+  --accent-strong: #b5691a;
+  --accent2: #2b5c4c;
+  --line: rgba(22, 33, 28, 0.16);
+  --line-strong: rgba(22, 33, 28, 0.32);
+  --shadow: 0 18px 40px -22px rgba(22, 33, 28, 0.35);
+  --focus: #1e6a55;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "Consolas", "SF Mono", "Cascadia Mono", Menlo, monospace;
+
+  --sp-1: 0.3rem;
+  --sp-2: 0.6rem;
+  --sp-3: 1.1rem;
+  --sp-4: 1.8rem;
+  --sp-5: 2.8rem;
+  --sp-6: 4.4rem;
+  --radius: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ede9dc;
+    --ink-soft: #b9c0b7;
+    --paper: #12180f;
+    --paper-raised: #1a2117;
+    --accent: #e5a245;
+    --accent-strong: #f0b45e;
+    --accent2: #5fae93;
+    --line: rgba(237, 233, 220, 0.16);
+    --line-strong: rgba(237, 233, 220, 0.34);
+    --shadow: 0 18px 44px -20px rgba(0, 0, 0, 0.6);
+    --focus: #6fc2a6;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink: #ede9dc;
+  --ink-soft: #b9c0b7;
+  --paper: #12180f;
+  --paper-raised: #1a2117;
+  --accent: #e5a245;
+  --accent-strong: #f0b45e;
+  --accent2: #5fae93;
+  --line: rgba(237, 233, 220, 0.16);
+  --line-strong: rgba(237, 233, 220, 0.34);
+  --shadow: 0 18px 44px -20px rgba(0, 0, 0, 0.6);
+  --focus: #6fc2a6;
+}
+
+:root[data-theme="light"] {
+  --ink: #16211c;
+  --ink-soft: #4b564e;
+  --paper: #ffffff;
+  --paper-raised: #ffffff;
+  --accent: #c97a22;
+  --accent-strong: #b5691a;
+  --accent2: #2b5c4c;
+  --line: rgba(22, 33, 28, 0.16);
+  --line-strong: rgba(22, 33, 28, 0.32);
+  --shadow: 0 18px 40px -22px rgba(22, 33, 28, 0.35);
+  --focus: #1e6a55;
+}
+
+/* ================================================================
+   BASE RESET
+   ================================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ================================================================
+   BACKGROUND TEXTURE
+   ================================================================ */
+.bg-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.35;
+}
+
+/* ================================================================
+   TYPOGRAPHY
+   ================================================================ */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.4em;
+  height: 1px;
+  background: var(--accent-strong);
+  display: inline-block;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 4vw + 1.2rem, 4.4rem);
+}
+
+h2 {
+  font-size: clamp(1.7rem, 2.6vw + 1rem, 2.7rem);
+}
+
+p.lede {
+  font-size: clamp(1.02rem, 0.4vw + 0.9rem, 1.22rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* ================================================================
+   PAGE LAYOUT PRIMITIVES
+   ================================================================ */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding: clamp(3.5rem, 8vw, 7rem) clamp(1.6rem, 7vw, 7.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section.raised {
+  background: var(--paper-raised);
+}
+
+.section-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ================================================================
+   SHARED UTILITIES — CTA BUTTONS
+   (Used in: Header, Hero, MobileMenu, CTA)
+   ================================================================ */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 0.95em 1.6em;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--accent-strong);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Pill outline variant */
+.cta-btn-pill {
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  gap: 0.5em;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-btn-pill:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+/* Solid dark pill variant */
+.cta-btn-dark {
+  border-radius: 999px;
+}
+
+/* ================================================================
+   SHARED UTILITIES — CARD GRID
+   (Used in: Problem, Solution)
+   ================================================================ */
+.grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.grid.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 760px) {
+  .grid.cols-2,
+  .grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: color-mix(in srgb, var(--paper-raised) 82%, transparent);
+  backdrop-filter: blur(10px);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.section.raised .card {
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ================================================================
+   SHARED UTILITIES — MOCK UI ELEMENTS
+   (Used in: AIFeature, Recipes)
+   ================================================================ */
+.mock-wrap {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.mock-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+.arrow-between {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  color: var(--accent-strong);
+  font-size: 1.4rem;
+}
+
+@media (max-width: 760px) {
+  .arrow-between {
+    transform: rotate(90deg);
+  }
+}
+
+.fineprint {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  max-width: 64ch;
+}
+
+.fineprint strong {
+  color: var(--ink);
+}
+
+/* ================================================================
+   SCROLL REVEAL  (applied programmatically by Reveal component)
+   ================================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card,
+  .cta-btn,
+  body {
+    transition: none;
+  }
+}

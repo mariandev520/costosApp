@@ -1,0 +1,94 @@
+.hero {
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.6rem, 7vw, 7.5rem);
+  overflow: hidden;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.heroContent h1 {
+  font-size: clamp(2.2rem, 3.6vw + 1rem, 4rem);
+}
+
+.heroItalic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.heroContent h1 strong {
+  font-weight: 800;
+  font-style: normal;
+}
+
+.heroImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImage img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.10));
+}
+
+@media (max-width: 860px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .heroContent {
+    align-items: center;
+    order: 1;
+  }
+
+  .heroImage {
+    order: 2;
+  }
+
+  .heroContent h1 {
+    text-wrap: balance;
+  }
+
+  .heroContent :global(.lede) {
+    margin-inline: auto;
+  }
+}
+
+.heroEnter {
+  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroEnter {
+    animation: none;
+  }
+}

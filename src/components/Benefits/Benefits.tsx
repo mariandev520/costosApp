@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import styles from "./Benefits.module.css";
 
 const benefits = [
   {
@@ -27,10 +28,10 @@ export function Benefits() {
           <div className="eyebrow">Por qué Coquinaria</div>
           <h2>Menos papeleo. Más decisiones con datos.</h2>
         </Reveal>
-        <div className="benefits">
+        <div className={styles.benefits}>
           {benefits.map((b, i) => (
-            <Reveal delay={i * 70} key={b.title} className="b">
-              <span className="mk">→</span>
+            <Reveal delay={i * 70} key={b.title} className={styles.item}>
+              <span className={styles.marker}>→</span>
               <p>
                 <strong>{b.title}</strong>
                 {b.text}

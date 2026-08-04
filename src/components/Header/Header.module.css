@@ -1,0 +1,141 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1.6rem, 5vw, 4rem);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+/* ---- Navigation links ---- */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 2.5vw, 2.4rem);
+}
+
+.navLink {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--ink);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--ink);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 860px) {
+  .navLinks {
+    display: none;
+  }
+}
+
+/* ---- Actions area ---- */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+
+.actions :global(.cta-btn-pill) {
+  padding: 0.55em 1.2em;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 860px) {
+  .actions :global(.cta-btn-pill) {
+    display: none;
+  }
+}
+
+/* ---- Hamburger ---- */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 12;
+}
+
+@media (max-width: 860px) {
+  .hamburger {
+    display: flex;
+  }
+}
+
+.hamburgerBar,
+.hamburgerBar::before,
+.hamburgerBar::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.hamburgerBar::before,
+.hamburgerBar::after {
+  content: "";
+  position: absolute;
+}
+
+.hamburgerBar::before {
+  transform: translateY(-7px);
+}
+
+.hamburgerBar::after {
+  transform: translateY(7px);
+}
+
+.hamburgerBarOpen {
+  background: transparent;
+}
+
+.hamburgerBarOpen::before {
+  transform: rotate(45deg);
+}
+
+.hamburgerBarOpen::after {
+  transform: rotate(-45deg);
+}

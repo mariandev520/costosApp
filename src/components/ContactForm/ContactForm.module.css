@@ -1,0 +1,55 @@
+/* ---- Contact form ---- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  max-width: 640px;
+  background: color-mix(in srgb, var(--paper-raised) 70%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  padding: var(--sp-4);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+@media (max-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.form input,
+.form textarea {
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 60%, transparent);
+  border: 1px solid var(--line-strong);
+  padding: 0.7em 0.8em;
+  resize: vertical;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: var(--accent-strong);
+  outline: none;
+}
+
+.note {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent2);
+  margin: 0;
+}

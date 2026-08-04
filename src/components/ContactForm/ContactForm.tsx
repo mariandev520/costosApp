@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { siteConfig } from "@/lib/site-config";
+import styles from "./ContactForm.module.css";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -33,8 +34,8 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="form-row">
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.formRow}>
         <label>
           <span>Nombre</span>
           <input type="text" name="nombre" required autoComplete="name" />
@@ -44,7 +45,7 @@ export function ContactForm() {
           <input type="text" name="negocio" autoComplete="organization" />
         </label>
       </div>
-      <div className="form-row">
+      <div className={styles.formRow}>
         <label>
           <span>Email</span>
           <input type="email" name="email" required autoComplete="email" />
@@ -62,7 +63,7 @@ export function ContactForm() {
         Enviar y coordinar demo
       </button>
       {sent && (
-        <p className="form-note" role="status">
+        <p className={styles.note} role="status">
           Se abrió tu cliente de email con los datos cargados — confirmá el
           envío desde ahí.
         </p>

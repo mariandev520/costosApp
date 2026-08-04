@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import styles from "./ThemeToggle.module.css";
 
 type Theme = "light" | "dark";
 
@@ -25,7 +26,7 @@ export function ThemeToggle() {
   }, []);
 
   if (!theme) {
-    return <button className="theme-toggle" aria-hidden="true" tabIndex={-1} />;
+    return <button className={styles.themeToggle} aria-hidden="true" tabIndex={-1} />;
   }
 
   const next: Theme = theme === "dark" ? "light" : "dark";
@@ -33,7 +34,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="theme-toggle"
+      className={styles.themeToggle}
       aria-label={`Cambiar a modo ${next === "dark" ? "oscuro" : "claro"}`}
       onClick={() => {
         applyTheme(next);
