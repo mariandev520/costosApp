@@ -15,7 +15,7 @@ const areas = [
   },
   {
     title: "Informes",
-    text: "Resumen de albaranes, cambios de precio, movimientos de stock y alertas.",
+    text: "Resumen de factura, cambios de precio, movimientos de stock y alertas.",
   },
   {
     title: "Platos e Ingredientes",
