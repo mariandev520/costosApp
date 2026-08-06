@@ -49,57 +49,11 @@ export default function Hero() {
 
         <div className={styles.right} aria-hidden="true">
           <div className={styles.mockupContainer}>
-            {/* Main app card - Informes */}
-            <div className={`${styles.card} ${styles.cardMain}`}>
-              <div className={styles.cardHeader}>
-                <div className={styles.cardDot} />
-                <span className={styles.cardTitle}>Informes</span>
-              </div>
-              <div className={styles.cardBody}>
-                <div className={styles.statRow}>
-                  <span className={styles.statLabel}>Margen bruto</span>
-                  <span className={styles.statValue} style={{color: '#4ade80'}}>71%</span>
-                </div>
-                <div className={styles.barChart}>
-                  <div className={styles.bar} style={{height: '60%', background: '#e5e7eb'}} />
-                  <div className={styles.bar} style={{height: '80%', background: '#e5e7eb'}} />
-                  <div className={styles.bar} style={{height: '50%', background: '#e5e7eb'}} />
-                  <div className={styles.bar} style={{height: '90%', background: '#1f2937'}} />
-                  <div className={styles.bar} style={{height: '70%', background: '#e5e7eb'}} />
-                  <div className={styles.bar} style={{height: '65%', background: '#e5e7eb'}} />
-                  <div className={styles.bar} style={{height: '85%', background: '#e5e7eb'}} />
-                </div>
-                <div className={styles.cardRow}>
-                  <span className={styles.cardLabel}>Semana anterior</span>
-                  <span className={styles.cardBadgeUp}>+4.2%</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Secondary card - Proveedores */}
-            <div className={`${styles.card} ${styles.cardSecondary}`}>
-              <div className={styles.cardHeader}>
-                <div className={styles.cardDot} style={{background: '#f59e0b'}} />
-                <span className={styles.cardTitle}>Proveedores</span>
-              </div>
-              <div className={styles.cardMini}>
-                <div className={styles.miniRow}><div className={styles.miniLine} style={{width:'70%'}} /><div className={styles.miniNum}>€ 480</div></div>
-                <div className={styles.miniRow}><div className={styles.miniLine} style={{width:'50%'}} /><div className={styles.miniNum}>€ 312</div></div>
-                <div className={styles.miniRow}><div className={styles.miniLine} style={{width:'85%'}} /><div className={styles.miniNum}>€ 890</div></div>
-              </div>
-            </div>
-
-            {/* Tertiary card - Recetas */}
-            <div className={`${styles.card} ${styles.cardTertiary}`}>
-              <div className={styles.cardHeader}>
-                <div className={styles.cardDot} style={{background: '#60a5fa'}} />
-                <span className={styles.cardTitle}>Recetas</span>
-              </div>
-              <div className={styles.cardMini}>
-                <div className={styles.miniRow}><div className={styles.miniLine} style={{width:'60%'}} /><div className={styles.miniNum} style={{color:'#4ade80'}}>67%</div></div>
-                <div className={styles.miniRow}><div className={styles.miniLine} style={{width:'40%'}} /><div className={styles.miniNum} style={{color:'#f87171'}}>48%</div></div>
-              </div>
-            </div>
+            <img
+              src="https://res.cloudinary.com/aerhzjuo/image/upload/v1786049090/img-hero-landing-coquinaria_yp0ebj.png"
+              alt="Coquinaria App Interface"
+              className={styles.heroImage}
+            />
           </div>
         </div>
       </div>

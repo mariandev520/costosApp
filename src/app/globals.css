@@ -217,7 +217,20 @@ body {
   font-weight: 400;
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
-  background-color: var(--color-bg);
+  background-color: #f0f0ee; /* Base light gray/white */
+  background-image:
+    /* 1. Noise Grain */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E"),
+    /* 2. Hero Blobs (Top) */
+    radial-gradient(circle 800px at -10% 2%, hsla(60, 100%, 55%, 0.72) 0%, transparent 100%),
+    radial-gradient(circle 900px at 110% 12%, hsla(58, 100%, 58%, 0.68) 0%, transparent 100%),
+    /* 3. Mid-page Blobs */
+    radial-gradient(circle 1000px at -5% 35%, hsla(55, 100%, 52%, 0.45) 0%, transparent 100%),
+    radial-gradient(circle 850px at 105% 55%, hsla(62, 100%, 55%, 0.5) 0%, transparent 100%),
+    /* 4. Lower-page Blobs */
+    radial-gradient(circle 1100px at -10% 75%, hsla(59, 100%, 56%, 0.4) 0%, transparent 100%),
+    radial-gradient(circle 950px at 105% 95%, hsla(57, 100%, 58%, 0.55) 0%, transparent 100%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
