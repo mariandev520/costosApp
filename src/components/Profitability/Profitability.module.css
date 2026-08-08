@@ -123,6 +123,27 @@
   box-shadow: 0 28px 56px rgba(0,0,0,0.4);
 }
 
+/* Holographic color-shift — follows the cursor, driven by GSAP */
+.holoOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #ff6b9d, #ffd93d, #6bffb8, #6bc7ff, #b06bff, #ff6b9d);
+  background-size: 250% 250%;
+  background-position: 50% 50%;
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, background-position;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .holoOverlay {
+    display: none;
+  }
+}
+
 .cardHeader {
   margin-bottom: var(--space-4);
 }
