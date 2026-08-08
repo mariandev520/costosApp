@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from 'react';
 import { useMagnetic } from '@/hooks/useMagnetic';
-import { gsap } from '@/lib/gsap';
+import { gsap, SplitText } from '@/lib/gsap';
 import styles from './Hero.module.css';
 
 const HEADLINE = 'Tu cocina, bajo control desde una sola pantalla.';
@@ -34,19 +34,24 @@ export default function Hero() {
       return undefined;
     }
 
-    const tween = gsap.to(el, {
-      duration: 1.6,
-      delay: 0.5,
-      ease: 'none',
-      scrambleText: {
-        text: HEADLINE,
-        chars: 'upperAndLowerCase',
-        revealDelay: 0.15,
-        speed: 0.35,
-      },
+    const split = new SplitText(el, { type: 'words', wordsClass: 'word' });
+    gsap.set(split.words, { display: 'inline-block' });
+
+    const tween = gsap.from(split.words, {
+      opacity: 0,
+      y: 28,
+      scale: 0.82,
+      rotate: () => gsap.utils.random(-8, 8),
+      duration: 0.85,
+      delay: 0.35,
+      stagger: 0.06,
+      ease: 'back.out(1.8)',
     });
 
-    return () => tween.kill();
+    return () => {
+      tween.kill();
+      split.revert();
+    };
   }, []);
 
   useEffect(() => {
