@@ -1,22 +1,76 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
-import { useScrollProgress } from '@/hooks/useScrollProgress';
+import { useMagnetic } from '@/hooks/useMagnetic';
 import { mergeRefs } from '@/lib/mergeRefs';
+import { gsap } from '@/lib/gsap';
 import styles from './Features.module.css';
 
 export default function Features() {
   const containerRef1 = useScrollRevealMultiple();
   const containerRef2 = useScrollRevealMultiple();
-  const progressRef1 = useScrollProgress({ property: '--row-progress' });
-  const progressRef2 = useScrollProgress({ property: '--row-progress' });
+  const ctaRef = useMagnetic({ strength: 0.4 });
+
+  const pinRowRef = useRef(null);
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const card3Ref = useRef(null);
+
+  const pinRowRef2 = useRef(null);
+  const card4Ref = useRef(null);
+  const card5Ref = useRef(null);
+  const card6Ref = useRef(null);
+
+  useEffect(() => {
+    const rowCards = [card1Ref.current, card2Ref.current, card3Ref.current].filter(Boolean);
+    const rowCards2 = [card4Ref.current, card5Ref.current, card6Ref.current].filter(Boolean);
+
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+      const cleanups = [];
+
+      // dir: 1 makes cards drift in from the right (row 1), -1 from the left (row 2)
+      const buildPin = (rowEl, cards, dir) => {
+        if (!rowEl || cards.length !== 3) return;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: rowEl,
+            start: 'top top+=90',
+            end: '+=45%',
+            scrub: 0.6,
+            pin: true,
+            anticipatePin: 1,
+          },
+        });
+
+        tl.from(cards[0], { xPercent: 8 * dir, opacity: 0, rotate: 2 * dir, duration: 1, clearProps: 'transform,opacity' })
+          .from(cards[1], { xPercent: 11 * dir, opacity: 0, rotate: 3 * dir, duration: 1, clearProps: 'transform,opacity' }, 0.15)
+          .from(cards[2], { xPercent: 14 * dir, opacity: 0, rotate: 4 * dir, duration: 1, clearProps: 'transform,opacity' }, 0.3);
+
+        cleanups.push(() => {
+          tl.scrollTrigger?.kill();
+          tl.kill();
+        });
+      };
+
+      buildPin(pinRowRef.current, rowCards, 1);
+      buildPin(pinRowRef2.current, rowCards2, -1);
+
+      return () => cleanups.forEach((fn) => fn());
+    });
+
+    return () => mm.revert();
+  }, []);
 
   return (
     <section id="funcionalidades" className={styles.section}>
       <div className="container">
         
         {/* Part 1: Text Left, Cards Right */}
-        <div className={styles.row} ref={mergeRefs(containerRef1, progressRef1)}>
+        <div className={styles.row} ref={mergeRefs(containerRef1, pinRowRef)}>
           <div className={`${styles.contentLeft} reveal`}>
             <h2 className={styles.title}>
               Seis áreas de tu negocio, siempre a la vista.
@@ -25,7 +79,7 @@ export default function Features() {
           
           <div className={`${styles.cardsRight} reveal reveal--delay-1`}>
             {/* Card 1 */}
-            <div className={`${styles.appCard} ${styles.offsetCard1} border-glow`}>
+            <div ref={card1Ref} className={`${styles.appCard} ${styles.offsetCard1} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Proveedores</span>
                 <div className={styles.checkIcon}>
@@ -45,7 +99,7 @@ export default function Features() {
             </div>
 
             {/* Card 2 */}
-            <div className={`${styles.appCard} ${styles.offsetCard2} border-glow`}>
+            <div ref={card2Ref} className={`${styles.appCard} ${styles.offsetCard2} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Insumos</span>
               </div>
@@ -59,7 +113,7 @@ export default function Features() {
             </div>
 
             {/* Card 3 */}
-            <div className={`${styles.appCard} ${styles.offsetCard3} border-glow`}>
+            <div ref={card3Ref} className={`${styles.appCard} ${styles.offsetCard3} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Historial de precios</span>
               </div>
@@ -75,19 +129,19 @@ export default function Features() {
         </div>
 
         {/* Part 2: Cards Left, Text Right */}
-        <div className={`${styles.row} ${styles.rowReverse}`} ref={mergeRefs(containerRef2, progressRef2)}>
+        <div className={`${styles.row} ${styles.rowReverse}`} ref={mergeRefs(containerRef2, pinRowRef2)}>
           <div className={`${styles.contentRight} reveal reveal--delay-1`}>
             <h2 className={styles.title}>
               LLevá el control en base a datos.
             </h2>
-            <a href="#precio" className={styles.cta}>
+            <a href="#precio" ref={ctaRef} className={styles.cta}>
               Quiero ver una demo
             </a>
           </div>
 
           <div className={`${styles.cardsLeft} reveal`}>
              {/* Card 4 */}
-             <div className={`${styles.appCard} ${styles.offsetCard4} border-glow`}>
+             <div ref={card4Ref} className={`${styles.appCard} ${styles.offsetCard4} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Informes</span>
                 <div className={styles.checkIcon}>
@@ -107,7 +161,7 @@ export default function Features() {
             </div>
 
             {/* Card 5 */}
-            <div className={`${styles.appCard} ${styles.offsetCard5} border-glow`}>
+            <div ref={card5Ref} className={`${styles.appCard} ${styles.offsetCard5} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Platos e ingredientes</span>
               </div>
@@ -121,7 +175,7 @@ export default function Features() {
             </div>
 
             {/* Card 6 */}
-            <div className={`${styles.appCard} ${styles.offsetCard6} border-glow`}>
+            <div ref={card6Ref} className={`${styles.appCard} ${styles.offsetCard6} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Stock</span>
               </div>

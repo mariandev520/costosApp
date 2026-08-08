@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
+import { gsap } from '@/lib/gsap';
 import styles from './AIScanner.module.css';
 
 const STEPS = [
@@ -47,6 +49,44 @@ const STEPS = [
 export default function AIScanner() {
   const containerRef = useScrollRevealMultiple();
   const demoRef = useScrollRevealMultiple();
+  const trackRef = useRef(null);
+  const lineRef = useRef(null);
+  const beamRef = useRef(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const line = lineRef.current;
+    const beam = beamRef.current;
+    if (!track || !line || !beam) return undefined;
+
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
+      gsap.set(line, { drawSVG: '0%' });
+      gsap.set(beam, { left: '0%', opacity: 0 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: track,
+          start: 'top 75%',
+          end: 'bottom 55%',
+          scrub: 0.6,
+        },
+      });
+
+      tl.to(beam, { opacity: 1, duration: 0.05 }, 0)
+        .to(line, { drawSVG: '100%', duration: 1, ease: 'none' }, 0)
+        .to(beam, { left: '100%', duration: 1, ease: 'none' }, 0)
+        .to(beam, { opacity: 0, duration: 0.05 }, 0.95);
+
+      return () => {
+        tl.scrollTrigger?.kill();
+        tl.kill();
+      };
+    });
+
+    return () => mm.revert();
+  }, []);
 
   return (
     <section id="escaner-ia" className={styles.section}>
@@ -66,8 +106,13 @@ export default function AIScanner() {
               <p className={styles.stepDesc}>{step.desc}</p>
             </div>
           ))}
-          {/* Connector Line (desktop) */}
-          <div className={`${styles.connectorLine} reveal`}></div>
+          {/* Connector Line (desktop) — draws itself as a scanning beam travels across */}
+          <div className={styles.connectorTrack} ref={trackRef} aria-hidden="true">
+            <svg className={styles.connectorSvg} viewBox="0 0 100 4" preserveAspectRatio="none">
+              <line ref={lineRef} className={styles.connectorPath} x1="0" y1="2" x2="100" y2="2" vectorEffect="non-scaling-stroke" />
+            </svg>
+            <div className={styles.connectorBeam} ref={beamRef} />
+          </div>
         </div>
 
         {/* Visual Demo Flow */}

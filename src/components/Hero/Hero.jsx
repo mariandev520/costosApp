@@ -1,12 +1,20 @@
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
-import { useScrollProgress } from '@/hooks/useScrollProgress';
+import { useMagnetic } from '@/hooks/useMagnetic';
+import { gsap } from '@/lib/gsap';
 import styles from './Hero.module.css';
+
+const HEADLINE = 'Tu cocina, bajo control desde una sola pantalla.';
 
 export default function Hero() {
   const sectionRef = useRef(null);
-  const mockupRef = useScrollProgress({ property: '--mockup-progress' });
+  const headingRef = useRef(null);
+  const mockupRef = useRef(null);
+  const rotateXRef = useRef(null);
+  const rotateYRef = useRef(null);
+  const primaryCtaRef = useMagnetic({ strength: 0.4 });
+  const secondaryCtaRef = useMagnetic({ strength: 0.4 });
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -17,12 +25,75 @@ export default function Hero() {
     }
   }, []);
 
+  useEffect(() => {
+    const el = headingRef.current;
+    if (!el) return undefined;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = HEADLINE;
+      return undefined;
+    }
+
+    const tween = gsap.to(el, {
+      duration: 1.6,
+      delay: 0.5,
+      ease: 'none',
+      scrambleText: {
+        text: HEADLINE,
+        chars: 'upperAndLowerCase',
+        revealDelay: 0.15,
+        speed: 0.35,
+      },
+    });
+
+    return () => tween.kill();
+  }, []);
+
+  useEffect(() => {
+    const mockupEl = mockupRef.current;
+    const sectionEl = sectionRef.current;
+    if (!mockupEl || !sectionEl) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+
+    gsap.set(mockupEl, { transformPerspective: 900 });
+    rotateXRef.current = gsap.quickTo(mockupEl, 'rotationX', { duration: 0.6, ease: 'power3' });
+    rotateYRef.current = gsap.quickTo(mockupEl, 'rotationY', { duration: 0.6, ease: 'power3' });
+
+    const scrollTween = gsap.to(mockupEl, {
+      yPercent: -10,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: sectionEl,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 0.6,
+      },
+    });
+
+    return () => {
+      scrollTween.scrollTrigger?.kill();
+      scrollTween.kill();
+      gsap.killTweensOf(mockupEl);
+      rotateXRef.current = null;
+      rotateYRef.current = null;
+    };
+  }, []);
+
   const handlePointerMove = useCallback((e) => {
     const el = sectionRef.current;
     if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const rect = el.getBoundingClientRect();
-    el.style.setProperty('--spot-x', `${(((e.clientX - rect.left) / rect.width) * 100).toFixed(1)}%`);
-    el.style.setProperty('--spot-y', `${(((e.clientY - rect.top) / rect.height) * 100).toFixed(1)}%`);
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    el.style.setProperty('--spot-x', `${(px * 100).toFixed(1)}%`);
+    el.style.setProperty('--spot-y', `${(py * 100).toFixed(1)}%`);
+    rotateXRef.current?.((0.5 - py) * 12);
+    rotateYRef.current?.((px - 0.5) * 12);
+  }, []);
+
+  const handlePointerLeave = useCallback(() => {
+    rotateXRef.current?.(0);
+    rotateYRef.current?.(0);
   }, []);
 
   return (
@@ -32,6 +103,7 @@ export default function Hero() {
       className={styles.hero}
       aria-labelledby="hero-heading"
       onMouseMove={handlePointerMove}
+      onMouseLeave={handlePointerLeave}
     >
       <div className={styles.spotlight} aria-hidden="true" />
       <div className={`${styles.content} container`}>
@@ -41,8 +113,8 @@ export default function Hero() {
             <span>Nuevas funcionalidades para usuarios activos 🔥</span>
           </div>
 
-          <h1 id="hero-heading" className={styles.heading}>
-            Tu cocina, bajo control desde una sola pantalla.
+          <h1 id="hero-heading" className={styles.heading} aria-label={HEADLINE}>
+            <span ref={headingRef} aria-hidden="true">{HEADLINE}</span>
           </h1>
 
           <p className={styles.subtitle}>
@@ -50,10 +122,10 @@ export default function Hero() {
           </p>
 
           <div className={styles.ctas}>
-            <a href="#precio" className={styles.ctaPrimary}>
+            <a href="#precio" ref={primaryCtaRef} className={styles.ctaPrimary}>
               Quiero ver una demo
             </a>
-            <a href="#contacto" className={styles.ctaSecondary}>
+            <a href="#contacto" ref={secondaryCtaRef} className={styles.ctaSecondary}>
               Contacto
             </a>
           </div>

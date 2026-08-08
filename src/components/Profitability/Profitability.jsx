@@ -3,12 +3,14 @@
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { useTilt } from '@/hooks/useTilt';
+import { useMagnetic } from '@/hooks/useMagnetic';
 import styles from './Profitability.module.css';
 
 export default function Profitability() {
   const containerRef = useScrollRevealMultiple();
   const dashedRef = useScrollProgress({ property: '--dash-progress' });
   const { ref: tiltRef, onMouseMove, onMouseLeave } = useTilt({ max: 6 });
+  const ctaRef = useMagnetic({ strength: 0.4 });
 
   return (
     <section className={styles.section}>
@@ -25,7 +27,7 @@ export default function Profitability() {
             Suma Los Gastos Generales, Aplica El IVA Y Propone El Precio De Venta Y El Margen. Si Cambia El Precio 
             De Un Ingrediente, Ves Al Instante Cómo Afecta A Cada Plato.
           </p>
-          <a href="#precio" className={styles.cta}>
+          <a href="#precio" ref={ctaRef} className={styles.cta}>
             Quiero ver una demo
           </a>
         </div>

@@ -1,10 +1,12 @@
 'use client';
 
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
+import { useMagnetic } from '@/hooks/useMagnetic';
 import styles from './Pricing.module.css';
 
 export default function Pricing() {
   const containerRef = useScrollRevealMultiple();
+  const ctaRef = useMagnetic({ strength: 0.4 });
 
   return (
     <section id="precio" className={styles.section}>
@@ -48,7 +50,7 @@ export default function Pricing() {
             Define Un Mínimo Y Un Objetivo Para Cada Ingrediente. CostosApp Avisa Qué Está Agotado 
             O Por Debajo Del Mínimo, Y Te Dice Cuánto Conviene Pedir.
           </p>
-          <a href="#contacto" className={styles.cta}>
+          <a href="#contacto" ref={ctaRef} className={styles.cta}>
             Quiero ver una demo
           </a>
         </div>
