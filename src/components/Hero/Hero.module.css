@@ -1,0 +1,154 @@
+.hero {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: var(--space-16);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+  overflow: hidden;
+}
+
+
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+}
+
+/* Left side */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  width: fit-content;
+}
+
+.badgeDot {
+  background: #111111;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+.heading {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #111111;
+  max-width: 560px;
+}
+
+.subtitle {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.55);
+  max-width: 460px;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #ffffff;
+  background: #111111;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background-color var(--transition-base), transform var(--transition-fast);
+}
+
+.ctaPrimary:hover {
+  background: #333333;
+  transform: translateY(-1px);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #111111;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.ctaSecondary:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Right side – Mockup cards */
+.right {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: 340px;
+}
+
+@media (min-width: 1024px) {
+  .right {
+    min-height: 420px;
+  }
+}
+
+.mockupContainer {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 360px;
+}
+
+@media (min-width: 1024px) {
+  .mockupContainer {
+    height: 420px;
+    max-width: 480px;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}

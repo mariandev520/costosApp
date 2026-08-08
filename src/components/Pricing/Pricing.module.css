@@ -1,0 +1,123 @@
+.section {
+  background-color: transparent;
+  padding-block: var(--space-32);
+  color: #111111;
+}
+
+.content {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Left: Table */
+.left {
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+}
+
+.tableHeader {
+  font-size: 10px;
+  font-weight: 600;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.item {
+  width: 100px;
+  font-weight: 500;
+}
+
+.barContainer {
+  flex: 1;
+  height: 8px;
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Add a line indicating the 'minimum' mark */
+.barContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 30%; /* Arbitrary mark for visual */
+  width: 2px;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.value {
+  width: 80px;
+  text-align: right;
+  font-family: var(--font-mono), monospace;
+  color: #666666;
+  font-size: 12px;
+}
+
+/* Right: Text */
+.right {
+  flex: 1;
+  max-width: 500px;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #111111;
+  margin-bottom: var(--space-6);
+}
+
+.description {
+  font-size: var(--text-base);
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #ffffff;
+  background: #111111;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background-color var(--transition-base), transform var(--transition-fast);
+}
+
+.cta:hover {
+  background: #333333;
+  transform: translateY(-1px);
+}

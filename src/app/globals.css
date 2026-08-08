@@ -1,0 +1,369 @@
+/* ============================================================
+   VISUALO — Global Stylesheet (Design Tokens + Reset + Utilities)
+   ============================================================ */
+
+/* ------------------------------------------------------------------
+   1. CSS Custom Properties — Design Tokens (Dark = default)
+   ------------------------------------------------------------------ */
+:root {
+  /* Colors — Backgrounds */
+  --color-bg: #000000;
+  --color-surface: #F5F5F3;
+  --color-footer-bg: #121212;
+  --color-card-bg: #111111;
+
+  /* Colors — Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ffffff;
+  --color-text-on-dark: #FFFFFF;
+  --color-text-muted-dark: #ffffff;
+
+  /* Colors — Accents & Borders */
+  --color-accent: #ffffff;
+  --color-border: #E8E8E8;
+  --color-tag-bg: #EDEDED;
+  --color-tag-text: #ffffff;
+  --color-link-hover: #555555;
+
+  /* Colors — Cards & Components */
+  --color-card-border: rgba(255, 255, 255, 0.07);
+  --color-card-border-hover: rgba(255, 255, 255, 0.15);
+  --color-card-glow: rgba(255, 255, 255, 0.12);
+  --color-card-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
+  --color-card-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --color-card-image-bg: #1a1a1a;
+
+  /* Colors — Text (alpha variants) */
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-text-subtle: rgba(255, 255, 255, 0.6);
+  --color-text-overlay: rgba(255, 255, 255, 0.7);
+
+  /* Colors — CTA Buttons */
+  --color-cta-bg: rgba(255, 255, 255, 0.06);
+  --color-cta-border: rgba(255, 255, 255, 0.15);
+  --color-cta-text: rgba(255, 255, 255, 0.85);
+  --color-cta-bg-hover: rgba(255, 255, 255, 0.12);
+  --color-cta-border-hover: rgba(255, 255, 255, 0.3);
+
+  /* Colors — Loaders */
+  --color-loader-track: rgba(255, 255, 255, 0.1);
+  --color-loader-spin: rgba(255, 255, 255, 0.8);
+
+  /* Colors — Navbar */
+  --color-navbar-scrolled-bg: rgba(0, 0, 0, 0.88);
+
+  /* Colors — Footer */
+  --color-footer-divider: rgba(255, 255, 255, 0.08);
+
+  /* Colors — Service icons */
+  --color-icon-stroke: rgba(255, 255, 255, 0.25);
+  --color-icon-check: rgba(255, 255, 255, 0.8);
+
+  /* Colors — Detail page borders */
+  --color-detail-border: rgba(255, 255, 255, 0.05);
+
+  /* Colors — Tag hover */
+  --color-tag-hover-bg: var(--color-surface);
+  --color-tag-hover-border: #BBBBB9;
+  --color-tag-hover-text: #000000;
+
+  /* Typography — Scale (base 16px) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 4rem;
+
+  /* Typography — Line Heights */
+  --leading-tight: 1.15;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* Typography — Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+
+  /* Spacing — 8px base grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Layout */
+  --page-padding-mobile: var(--space-5);
+  --page-padding-tablet: var(--space-8);
+  --page-padding-desktop: var(--space-16);
+  --container-max: 1200px;
+
+  /* Borders & Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --border-default: 1px solid var(--color-border);
+  --border-tag: 1px solid #D4D4D4;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 350ms ease;
+  --transition-reveal: 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------
+   1b. Light Mode Override — prefers-color-scheme
+   ------------------------------------------------------------------ */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Backgrounds */
+    --color-bg: #FAFAFA;
+    --color-surface: #FFFFFF;
+    --color-footer-bg: #F0F0EE;
+    --color-card-bg: #FFFFFF;
+
+    /* Text */
+    --color-text-primary: #111111;
+    --color-text-secondary: #555555;
+    --color-text-on-dark: #111111;
+    --color-text-muted-dark: #777777;
+
+    /* Accents & Borders */
+    --color-accent: #111111;
+    --color-border: #E0E0E0;
+    --color-tag-bg: #F5F5F3;
+    --color-tag-text: #333333;
+    --color-link-hover: #000000;
+
+    /* Cards & Components */
+    --color-card-border: rgba(0, 0, 0, 0.08);
+    --color-card-border-hover: rgba(0, 0, 0, 0.15);
+    --color-card-glow: rgba(0, 0, 0, 0.04);
+    --color-card-shadow: 0 24px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+    --color-card-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.06);
+    --color-card-image-bg: #F0F0EE;
+
+    /* Text (alpha variants) */
+    --color-text-muted: rgba(0, 0, 0, 0.5);
+    --color-text-subtle: rgba(0, 0, 0, 0.55);
+    /* --color-text-overlay stays the same — always on media */
+
+    /* CTA Buttons */
+    --color-cta-bg: rgba(0, 0, 0, 0.04);
+    --color-cta-border: rgba(0, 0, 0, 0.12);
+    --color-cta-text: rgba(0, 0, 0, 0.8);
+    --color-cta-bg-hover: rgba(0, 0, 0, 0.08);
+    --color-cta-border-hover: rgba(0, 0, 0, 0.2);
+
+    /* Loaders */
+    --color-loader-track: rgba(0, 0, 0, 0.1);
+    --color-loader-spin: rgba(0, 0, 0, 0.6);
+
+    /* Navbar */
+    --color-navbar-scrolled-bg: rgba(255, 255, 255, 0.92);
+
+    /* Footer */
+    --color-footer-divider: rgba(0, 0, 0, 0.08);
+
+    /* Service icons */
+    --color-icon-stroke: rgba(0, 0, 0, 0.2);
+    --color-icon-check: rgba(0, 0, 0, 0.7);
+
+    /* Detail page borders */
+    --color-detail-border: rgba(0, 0, 0, 0.08);
+
+    /* Tag hover */
+    --color-tag-hover-bg: #EDEDED;
+    --color-tag-hover-border: #BBBBB9;
+    --color-tag-hover-text: #000000;
+
+    /* Border tag */
+    --border-tag: 1px solid #D0D0D0;
+  }
+}
+
+/* ------------------------------------------------------------------
+   2. Reset & Base
+   ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  background-color: #f0f0ee; /* Base light gray/white */
+  background-image:
+    /* 1. Noise Grain */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E"),
+    /* 2. Hero Blobs (Top) */
+    radial-gradient(circle 800px at -10% 2%, hsla(60, 100%, 55%, 0.72) 0%, transparent 100%),
+    radial-gradient(circle 900px at 110% 12%, hsla(58, 100%, 58%, 0.68) 0%, transparent 100%),
+    /* 3. Mid-page Blobs */
+    radial-gradient(circle 1000px at -5% 35%, hsla(55, 100%, 52%, 0.45) 0%, transparent 100%),
+    radial-gradient(circle 850px at 105% 55%, hsla(62, 100%, 55%, 0.5) 0%, transparent 100%),
+    /* 4. Lower-page Blobs */
+    radial-gradient(circle 1100px at -10% 75%, hsla(59, 100%, 56%, 0.4) 0%, transparent 100%),
+    radial-gradient(circle 950px at 105% 95%, hsla(57, 100%, 58%, 0.55) 0%, transparent 100%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+/* Focus visible — Accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   3. Layout Utilities
+   ------------------------------------------------------------------ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--page-padding-mobile);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--page-padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--page-padding-desktop);
+  }
+}
+
+/* ------------------------------------------------------------------
+   4. Scroll Reveal Animation Utilities
+   ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--delay-1 {
+  transition-delay: 80ms;
+}
+
+.reveal--delay-2 {
+  transition-delay: 160ms;
+}
+
+.reveal--delay-3 {
+  transition-delay: 240ms;
+}
+
+.reveal--delay-4 {
+  transition-delay: 320ms;
+}
+
+.reveal--delay-5 {
+  transition-delay: 400ms;
+}
+
+.reveal--delay-6 {
+  transition-delay: 480ms;
+}
+
+/* ------------------------------------------------------------------
+   5. Page Load Animation
+   ------------------------------------------------------------------ */
+body {
+  animation: pageFadeIn 500ms ease both;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------
+   6. Accessibility Utilities
+   ------------------------------------------------------------------ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

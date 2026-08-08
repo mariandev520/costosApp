@@ -1,0 +1,225 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding-block: var(--space-3);
+  padding-inline: var(--page-padding-mobile);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color var(--transition-base), backdrop-filter var(--transition-base);
+}
+
+.scrolled {
+  background-color: var(--color-navbar-scrolled-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 640px) {
+  .navbar {
+    padding-inline: var(--page-padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding-inline: var(--page-padding-desktop);
+  }
+}
+
+/* Logo */
+.logo {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Desktop Nav Links */
+.links {
+  display: none;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .links {
+    display: flex;
+  }
+}
+
+.links a {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+  position: relative;
+  opacity: 0.75;
+}
+
+.links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-text-primary);
+  transition: width var(--transition-base);
+}
+
+.links a:hover {
+  opacity: 1;
+}
+
+.links a:hover::after {
+  width: 100%;
+}
+
+.links a.active {
+  opacity: 1;
+}
+
+.links a.active::after {
+  width: 100%;
+}
+
+/* Desktop CTAs */
+.ctas {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+@media (min-width: 1024px) {
+  .ctas {
+    display: flex;
+  }
+}
+
+.ctaRegister {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity var(--transition-base);
+  padding: var(--space-2) var(--space-3);
+}
+
+.ctaRegister:hover {
+  opacity: 1;
+}
+
+.ctaLogin {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base), transform var(--transition-fast);
+}
+
+.ctaLogin:hover {
+  background: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-text-primary);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+  transform-origin: center;
+}
+
+.hamburgerOpen span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburgerOpen span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileMenu a {
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+  transition: color var(--transition-base);
+}
+
+.mobileMenu a:hover {
+  color: var(--color-link-hover);
+}
+
+.mobileCtas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.mobileCtas a {
+  font-size: var(--text-base) !important;
+}
