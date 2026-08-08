@@ -1,6 +1,7 @@
 import { DM_Sans, DM_Mono } from 'next/font/google';
 import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import OrganizationJsonLd from '@/components/JsonLd/JsonLd';
+import BackgroundGlow from '@/components/BackgroundGlow/BackgroundGlow';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
         <OrganizationJsonLd />
       </head>
       <body style={{ fontFamily: 'var(--font-sans), "Helvetica Neue", Arial, sans-serif' }}>
+        <BackgroundGlow />
         {children}
         <WhatsAppButton />
       </body>

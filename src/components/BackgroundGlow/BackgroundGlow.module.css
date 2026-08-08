@@ -1,0 +1,24 @@
+.glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    58vmax circle at var(--glow-x, 50%) var(--glow-y, 32%),
+    hsla(262, 68%, 86%, var(--glow-opacity, 0.45)) 0%,
+    hsla(262, 62%, 87%, calc(var(--glow-opacity, 0.45) * 0.5)) 38%,
+    transparent 74%
+  );
+  will-change: background;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow {
+    background: radial-gradient(
+      58vmax circle at 50% 32%,
+      hsla(262, 68%, 86%, 0.4) 0%,
+      hsla(262, 62%, 87%, 0.2) 38%,
+      transparent 74%
+    );
+  }
+}
