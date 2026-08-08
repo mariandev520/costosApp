@@ -2,6 +2,7 @@
 
 import SectionHeader from '@/components/SectionHeader/SectionHeader';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
+import { useTilt } from '@/hooks/useTilt';
 import styles from './PainPoints.module.css';
 
 const PAIN_POINTS = [
@@ -43,6 +44,25 @@ const PAIN_POINTS = [
   },
 ];
 
+function PainPointCard({ point, index }) {
+  const { ref, onMouseMove, onMouseLeave } = useTilt({ max: 5 });
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className={`${styles.card} tilt tilt-glare border-glow reveal reveal--delay-${(index % 2) + 1}`}
+    >
+      <div className={styles.iconWrapper}>
+        {point.icon}
+      </div>
+      <h3 className={styles.cardTitle}>{point.title}</h3>
+      <p className={styles.cardDescription}>{point.description}</p>
+    </div>
+  );
+}
+
 export default function PainPoints() {
   const containerRef = useScrollRevealMultiple();
 
@@ -56,16 +76,7 @@ export default function PainPoints() {
 
         <div className={styles.grid}>
           {PAIN_POINTS.map((point, index) => (
-            <div
-              key={point.title}
-              className={`${styles.card} reveal reveal--delay-${(index % 2) + 1}`}
-            >
-              <div className={styles.iconWrapper}>
-                {point.icon}
-              </div>
-              <h3 className={styles.cardTitle}>{point.title}</h3>
-              <p className={styles.cardDescription}>{point.description}</p>
-            </div>
+            <PainPointCard key={point.title} point={point} index={index} />
           ))}
         </div>
       </div>

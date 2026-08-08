@@ -354,6 +354,146 @@ body {
 }
 
 /* ------------------------------------------------------------------
+   6b. Reveal Variants — direction & scale
+   ------------------------------------------------------------------ */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ------------------------------------------------------------------
+   7. Edge Transparency — soft fade masks
+   ------------------------------------------------------------------ */
+.edge-fade-top {
+  mask-image: linear-gradient(to bottom, transparent 0, #000 96px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 96px);
+}
+
+.edge-fade-bottom {
+  mask-image: linear-gradient(to top, transparent 0, #000 96px);
+  -webkit-mask-image: linear-gradient(to top, transparent 0, #000 96px);
+}
+
+.edge-fade-x {
+  mask-image: linear-gradient(to right, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+}
+
+.edge-fade-xy {
+  mask-image:
+    linear-gradient(to bottom, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%),
+    linear-gradient(to right, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%),
+    linear-gradient(to right, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+
+/* Gradient-ring borders — a translucent edge independent of whatever sits
+   behind the element (works over images, blobs, solid fills alike). */
+.border-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.border-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.02) 45%, rgba(0, 0, 0, 0.12));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 1;
+}
+
+.border-glow--dark::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.22));
+}
+
+/* ------------------------------------------------------------------
+   8. Pointer Tilt + Spotlight Glare
+   ------------------------------------------------------------------ */
+.tilt {
+  --tilt-rx: 0deg;
+  --tilt-ry: 0deg;
+  --tilt-mx: 50%;
+  --tilt-my: 50%;
+  transform: perspective(900px) rotateX(var(--tilt-rx)) rotateY(var(--tilt-ry));
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.tilt-glare {
+  position: relative;
+  isolation: isolate;
+}
+
+.tilt-glare::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--tilt-mx, 50%) var(--tilt-my, 50%), rgba(255, 255, 255, 0.4), transparent 55%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tilt-glare:hover::after {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .tilt {
+    transform: none !important;
+  }
+
+  .tilt-glare::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt {
+    transform: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
    6. Accessibility Utilities
    ------------------------------------------------------------------ */
 .sr-only {

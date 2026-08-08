@@ -1,18 +1,22 @@
 'use client';
 
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
+import { useScrollProgress } from '@/hooks/useScrollProgress';
+import { mergeRefs } from '@/lib/mergeRefs';
 import styles from './Features.module.css';
 
 export default function Features() {
   const containerRef1 = useScrollRevealMultiple();
   const containerRef2 = useScrollRevealMultiple();
+  const progressRef1 = useScrollProgress({ property: '--row-progress' });
+  const progressRef2 = useScrollProgress({ property: '--row-progress' });
 
   return (
     <section id="funcionalidades" className={styles.section}>
       <div className="container">
         
         {/* Part 1: Text Left, Cards Right */}
-        <div className={styles.row} ref={containerRef1}>
+        <div className={styles.row} ref={mergeRefs(containerRef1, progressRef1)}>
           <div className={`${styles.contentLeft} reveal`}>
             <h2 className={styles.title}>
               Seis áreas de tu negocio, siempre a la vista.
@@ -21,7 +25,7 @@ export default function Features() {
           
           <div className={`${styles.cardsRight} reveal reveal--delay-1`}>
             {/* Card 1 */}
-            <div className={`${styles.appCard} ${styles.offsetCard1}`}>
+            <div className={`${styles.appCard} ${styles.offsetCard1} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Proveedores</span>
                 <div className={styles.checkIcon}>
@@ -41,7 +45,7 @@ export default function Features() {
             </div>
 
             {/* Card 2 */}
-            <div className={`${styles.appCard} ${styles.offsetCard2}`}>
+            <div className={`${styles.appCard} ${styles.offsetCard2} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Insumos</span>
               </div>
@@ -55,7 +59,7 @@ export default function Features() {
             </div>
 
             {/* Card 3 */}
-            <div className={`${styles.appCard} ${styles.offsetCard3}`}>
+            <div className={`${styles.appCard} ${styles.offsetCard3} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Historial de precios</span>
               </div>
@@ -71,7 +75,7 @@ export default function Features() {
         </div>
 
         {/* Part 2: Cards Left, Text Right */}
-        <div className={`${styles.row} ${styles.rowReverse}`} ref={containerRef2}>
+        <div className={`${styles.row} ${styles.rowReverse}`} ref={mergeRefs(containerRef2, progressRef2)}>
           <div className={`${styles.contentRight} reveal reveal--delay-1`}>
             <h2 className={styles.title}>
               LLevá el control en base a datos.
@@ -83,7 +87,7 @@ export default function Features() {
 
           <div className={`${styles.cardsLeft} reveal`}>
              {/* Card 4 */}
-             <div className={`${styles.appCard} ${styles.offsetCard4}`}>
+             <div className={`${styles.appCard} ${styles.offsetCard4} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Informes</span>
                 <div className={styles.checkIcon}>
@@ -103,7 +107,7 @@ export default function Features() {
             </div>
 
             {/* Card 5 */}
-            <div className={`${styles.appCard} ${styles.offsetCard5}`}>
+            <div className={`${styles.appCard} ${styles.offsetCard5} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Platos e ingredientes</span>
               </div>
@@ -117,7 +121,7 @@ export default function Features() {
             </div>
 
             {/* Card 6 */}
-            <div className={`${styles.appCard} ${styles.offsetCard6}`}>
+            <div className={`${styles.appCard} ${styles.offsetCard6} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Stock</span>
               </div>

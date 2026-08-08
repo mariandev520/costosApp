@@ -8,14 +8,35 @@
   overflow: hidden;
 }
 
-
-
 .visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Cursor-follow spotlight */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(480px circle at var(--spot-x, 50%) var(--spot-y, 20%), rgba(255, 255, 255, 0.5), transparent 65%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero:hover .spotlight {
+  opacity: 1;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .spotlight {
+    display: none;
+  }
+}
+
 .content {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-12);
@@ -57,6 +78,18 @@
   padding: 2px 8px;
   border-radius: var(--radius-full);
   letter-spacing: 0.02em;
+  animation: badgePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.25); }
+  50% { box-shadow: 0 0 0 5px rgba(17, 17, 17, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badgeDot {
+    animation: none;
+  }
 }
 
 .heading {
@@ -138,6 +171,14 @@
   width: 100%;
   max-width: 420px;
   height: 360px;
+  transform: translateY(calc((var(--mockup-progress, 0) - 0.5) * -36px)) rotate(calc((var(--mockup-progress, 0) - 0.5) * -1.5deg));
+  animation: mockupFloat 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes mockupFloat {
+  0%, 100% { margin-top: 0px; }
+  50% { margin-top: -10px; }
 }
 
 @media (min-width: 1024px) {
@@ -147,8 +188,27 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .mockupContainer {
+    transform: none;
+    animation: none;
+  }
+}
+
+.mockupGlow {
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(closest-side, hsla(52, 100%, 60%, 0.35), transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
 .heroImage {
   width: 100%;
   height: auto;
   border-radius: var(--radius-lg);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%), linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
+  -webkit-mask-composite: source-in;
 }

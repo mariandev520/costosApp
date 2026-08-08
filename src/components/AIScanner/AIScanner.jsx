@@ -67,7 +67,7 @@ export default function AIScanner() {
             </div>
           ))}
           {/* Connector Line (desktop) */}
-          <div className={styles.connectorLine}></div>
+          <div className={`${styles.connectorLine} reveal`}></div>
         </div>
 
         {/* Visual Demo Flow */}

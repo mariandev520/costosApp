@@ -71,7 +71,24 @@
 
 .barFill {
   height: 100%;
+  width: 0%;
   border-radius: 4px;
+  transition: width 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:global(.visible) .barFill {
+  width: var(--target-width, 0%);
+}
+
+.tableRow:nth-child(2) .barFill { transition-delay: 80ms; }
+.tableRow:nth-child(3) .barFill { transition-delay: 200ms; }
+.tableRow:nth-child(4) .barFill { transition-delay: 320ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .barFill {
+    transition: none;
+    width: var(--target-width, 0%);
+  }
 }
 
 .value {

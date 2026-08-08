@@ -1,8 +1,20 @@
 .footer {
+  position: relative;
   background-color: #1a1a1a;
   color: #ffffff;
   padding-block: var(--space-20) var(--space-8);
   border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -80px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(26, 26, 26, 0.75));
+  pointer-events: none;
 }
 
 /* Top grid */
@@ -38,12 +50,13 @@
   font-size: var(--text-sm);
   color: rgba(255,255,255,0.7);
   text-decoration: none;
-  transition: color var(--transition-base);
+  transition: color var(--transition-base), transform var(--transition-base);
   display: inline-block;
 }
 
 .navList a:hover {
   color: #ffffff;
+  transform: translateX(4px);
 }
 
 /* Bottom bar */
@@ -91,7 +104,7 @@
 
 .socialIcons a {
   color: rgba(255,255,255,0.7);
-  transition: color var(--transition-base);
+  transition: color var(--transition-base), border-color var(--transition-base), transform var(--transition-base), background-color var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,5 +116,7 @@
 
 .socialIcons a:hover {
   color: #ffffff;
-  border-color: rgba(255,255,255,0.3);
+  border-color: rgba(255,255,255,0.35);
+  background-color: rgba(255,255,255,0.08);
+  transform: translateY(-3px) rotate(-6deg);
 }

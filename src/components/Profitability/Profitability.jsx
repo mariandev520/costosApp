@@ -1,10 +1,14 @@
 'use client';
 
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
+import { useScrollProgress } from '@/hooks/useScrollProgress';
+import { useTilt } from '@/hooks/useTilt';
 import styles from './Profitability.module.css';
 
 export default function Profitability() {
   const containerRef = useScrollRevealMultiple();
+  const dashedRef = useScrollProgress({ property: '--dash-progress' });
+  const { ref: tiltRef, onMouseMove, onMouseLeave } = useTilt({ max: 6 });
 
   return (
     <section className={styles.section}>
@@ -27,10 +31,15 @@ export default function Profitability() {
         </div>
 
         {/* Right: Recipe Card Mockup */}
-        <div className={`${styles.right} reveal reveal--delay-2`}>
+        <div className={`${styles.right} reveal reveal--delay-2`} ref={dashedRef}>
           <div className={styles.cardWrapper}>
             <div className={styles.dashedBox}></div>
-            <div className={styles.card}>
+            <div
+              className={`${styles.card} tilt tilt-glare border-glow`}
+              ref={tiltRef}
+              onMouseMove={onMouseMove}
+              onMouseLeave={onMouseLeave}
+            >
               <div className={styles.cardHeader}>
                 <h4 className={styles.cardTitle}>Risotto de hongos</h4>
               </div>

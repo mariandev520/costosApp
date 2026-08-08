@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import styles from './Navbar.module.css';
@@ -20,12 +20,36 @@ export default function Navbar() {
   const activeSection = useScrollSpy(SECTION_IDS);
   const router = useRouter();
   const pathname = usePathname();
+  const progressRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 40);
+
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollY / docHeight)) : 0;
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${progress})`;
+      }
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -124,6 +148,10 @@ export default function Navbar() {
           <span />
           <span />
         </button>
+
+        <div className={styles.progressTrack} aria-hidden="true">
+          <div ref={progressRef} className={styles.progressBar} />
+        </div>
       </header>
 
       {/* Mobile Menu Overlay */}

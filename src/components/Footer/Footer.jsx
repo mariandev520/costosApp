@@ -1,13 +1,18 @@
+'use client';
+
+import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  const containerRef = useScrollRevealMultiple();
+
   return (
     <footer id="contacto" className={styles.footer} role="contentinfo">
-      <div className="container">
+      <div className="container" ref={containerRef}>
         <div className={styles.top}>
 
           {/* Product column */}
-          <div className={styles.col}>
+          <div className={`${styles.col} reveal`}>
             <h3 className={styles.colTitle}>Product</h3>
             <ul className={styles.navList}>
               <li><a href="#">All Product</a></li>
@@ -17,7 +22,7 @@ export default function Footer() {
           </div>
 
           {/* Information column */}
-          <div className={styles.col}>
+          <div className={`${styles.col} reveal reveal--delay-1`}>
             <h3 className={styles.colTitle}>Information</h3>
             <ul className={styles.navList}>
               <li><a href="#">FAQ</a></li>
@@ -27,7 +32,7 @@ export default function Footer() {
           </div>
 
           {/* Company column */}
-          <div className={styles.col}>
+          <div className={`${styles.col} reveal reveal--delay-2`}>
             <h3 className={styles.colTitle}>Company</h3>
             <ul className={styles.navList}>
               <li><a href="#">About us</a></li>
@@ -38,7 +43,7 @@ export default function Footer() {
           </div>
 
           {/* Social column */}
-          <div className={styles.col}>
+          <div className={`${styles.col} reveal reveal--delay-3`}>
             <h3 className={styles.colTitle}>Social</h3>
             <ul className={styles.navList}>
               <li><a href="#">Facebook</a></li>
