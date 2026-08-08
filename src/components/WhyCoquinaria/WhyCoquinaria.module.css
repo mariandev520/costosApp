@@ -1,0 +1,109 @@
+/* ============================================================
+   WhyCoquinaria — Stacked Cards
+   ============================================================ */
+
+.section {
+    position: relative;
+    padding-block: var(--space-20) var(--space-32);
+}
+
+.header {
+    text-align: center;
+    max-width: 720px;
+    margin-inline: auto;
+    margin-bottom: var(--space-16);
+}
+
+.subtitle {
+    font-family: var(--font-mono, monospace);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------------
+   Stacked Cards Layout
+   ------------------------------------------------------------------ */
+.cardsStack {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 860px;
+    margin-inline: auto;
+}
+
+/* Individual Card (Sticky Container) */
+.card {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 220px;
+    background: linear-gradient(145deg, #2f3238 0%, #212328 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    padding: 3rem 3.5rem;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+}
+
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.45), 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cardActive {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.cardTitle {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 0.85rem;
+}
+
+.cardCopy {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    max-width: 680px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .section {
+        padding-block: var(--space-12) var(--space-16);
+    }
+
+    .card {
+        min-height: auto;
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .cardTitle {
+        font-size: 1.65rem;
+    }
+
+    .cardCopy {
+        font-size: 1rem;
+    }
+}
