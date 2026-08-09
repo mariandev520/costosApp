@@ -2,6 +2,7 @@
 
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
 import { useMagnetic } from '@/hooks/useMagnetic';
+import HoverText from '@/components/HoverText/HoverText';
 import styles from './Pricing.module.css';
 
 export default function Pricing() {
@@ -44,14 +45,14 @@ export default function Pricing() {
         {/* Right: Text */}
         <div className={`${styles.right} reveal reveal--delay-2`}>
           <h2 className={styles.title}>
-            Ninguna Sorpresa En Pleno Servicio.
+            <HoverText as="span" type="words">Ninguna Sorpresa En Pleno Servicio.</HoverText>
           </h2>
-          <p className={styles.description}>
-            Define Un Mínimo Y Un Objetivo Para Cada Ingrediente. CostosApp Avisa Qué Está Agotado 
+          <HoverText as="p" type="words" className={styles.description}>
+            Define Un Mínimo Y Un Objetivo Para Cada Ingrediente. CostosApp Avisa Qué Está Agotado
             O Por Debajo Del Mínimo, Y Te Dice Cuánto Conviene Pedir.
-          </p>
+          </HoverText>
           <a href="#contacto" ref={ctaRef} className={styles.cta}>
-            Quiero ver una demo
+            <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
           </a>
         </div>
 

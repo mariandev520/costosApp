@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { useTilt } from '@/hooks/useTilt';
 import { useMagnetic } from '@/hooks/useMagnetic';
+import HoverText from '@/components/HoverText/HoverText';
 import { gsap } from '@/lib/gsap';
 import styles from './Profitability.module.css';
 
@@ -108,17 +109,17 @@ export default function Profitability() {
 
         {/* Left: Text */}
         <div className={styles.left}>
-          <div className={styles.badge} ref={badgeRef}>Rentabilidad Real</div>
+          <div className={styles.badge} ref={badgeRef}><HoverText as="span" type="chars">Rentabilidad Real</HoverText></div>
           <h2 className={styles.title} ref={titleRef}>
-            Sabe qué plato te hace ganar dinero.
+            <HoverText as="span" type="words">Sabe qué plato te hace ganar dinero.</HoverText>
           </h2>
-          <p className={styles.description} ref={descRef}>
+          <HoverText as="p" type="words" className={styles.description} ref={descRef}>
             Añade Los Ingredientes Y Las Cantidades De Una Receta; Coquinaria Calcula El Coste De Materia Prima,
             Suma Los Gastos Generales, Aplica El IVA Y Propone El Precio De Venta Y El Margen. Si Cambia El Precio
             De Un Ingrediente, Ves Al Instante Cómo Afecta A Cada Plato.
-          </p>
+          </HoverText>
           <a href="#precio" ref={ctaRef} className={styles.cta}>
-            Quiero ver una demo
+            <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
           </a>
         </div>
 

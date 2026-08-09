@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
+import HoverText from '@/components/HoverText/HoverText';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
@@ -101,7 +102,7 @@ export default function Navbar() {
           aria-label="Coquinaria — Volver al inicio"
           onClick={(e) => handleSmoothScroll(e, '#hero')}
         >
-          <span className={styles.logoText}>Coquinaria</span>
+          <HoverText as="span" type="chars" className={styles.logoText}>Coquinaria</HoverText>
         </a>
 
         {/* Desktop Navigation */}
@@ -113,7 +114,7 @@ export default function Navbar() {
               className={activeSection === href.slice(1) ? styles.active : ''}
               onClick={(e) => handleSmoothScroll(e, href)}
             >
-              {label}
+              <HoverText as="span" type="chars">{label}</HoverText>
             </a>
           ))}
         </nav>
@@ -125,14 +126,14 @@ export default function Navbar() {
             className={styles.ctaRegister}
             onClick={(e) => handleSmoothScroll(e, '#contacto')}
           >
-            Registrar
+            <HoverText as="span" type="chars">Registrar</HoverText>
           </a>
           <a
             href="#precio"
             className={styles.ctaLogin}
             onClick={(e) => handleSmoothScroll(e, '#precio')}
           >
-            Login
+            <HoverText as="span" type="chars">Login</HoverText>
           </a>
         </div>
 
@@ -168,15 +169,15 @@ export default function Navbar() {
             onClick={(e) => handleSmoothScroll(e, href)}
             tabIndex={isMenuOpen ? 0 : -1}
           >
-            {label}
+            <HoverText as="span" type="chars">{label}</HoverText>
           </a>
         ))}
         <div className={styles.mobileCtas}>
           <a href="#contacto" className={styles.ctaLogin} onClick={(e) => handleSmoothScroll(e, '#contacto')} tabIndex={isMenuOpen ? 0 : -1}>
-            Registrar
+            <HoverText as="span" type="chars">Registrar</HoverText>
           </a>
           <a href="#precio" className={styles.ctaLogin} onClick={(e) => handleSmoothScroll(e, '#precio')} tabIndex={isMenuOpen ? 0 : -1}>
-            Login
+            <HoverText as="span" type="chars">Login</HoverText>
           </a>
         </div>
       </nav>

@@ -3,6 +3,7 @@
 import SectionHeader from '@/components/SectionHeader/SectionHeader';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
 import { useTilt } from '@/hooks/useTilt';
+import HoverText from '@/components/HoverText/HoverText';
 import styles from './PainPoints.module.css';
 
 const PAIN_POINTS = [
@@ -57,8 +58,8 @@ function PainPointCard({ point, index }) {
       <div className={styles.iconWrapper}>
         {point.icon}
       </div>
-      <h3 className={styles.cardTitle}>{point.title}</h3>
-      <p className={styles.cardDescription}>{point.description}</p>
+      <h3 className={styles.cardTitle}><HoverText as="span" type="chars">{point.title}</HoverText></h3>
+      <HoverText as="p" type="words" className={styles.cardDescription}>{point.description}</HoverText>
     </div>
   );
 }
@@ -70,8 +71,8 @@ export default function PainPoints() {
     <section id="pain-points" className={styles.section}>
       <div className="container" ref={containerRef}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Cada Semana Se Te Escapa Algo</h2>
-          <p className={styles.subtitle}>EL DÍA A DÍA SIN COSTOSAPP</p>
+          <h2 className={styles.title}><HoverText as="span" type="words">Cada Semana Se Te Escapa Algo</HoverText></h2>
+          <HoverText as="p" type="chars" className={styles.subtitle}>EL DÍA A DÍA SIN COSTOSAPP</HoverText>
         </div>
 
         <div className={styles.grid}>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
+import HoverText from '@/components/HoverText/HoverText';
 import { gsap } from '@/lib/gsap';
 import styles from './AIScanner.module.css';
 
@@ -92,7 +93,8 @@ export default function AIScanner() {
     <section id="escaner-ia" className={styles.section}>
       <div className="container">
         <h2 className={styles.title}>
-          Haz una foto al albarán.<br/>La IA hace el resto.
+          <HoverText as="span" type="words">Haz una foto al albarán.</HoverText><br/>
+          <HoverText as="span" type="words">La IA hace el resto.</HoverText>
         </h2>
 
         {/* Steps Flow */}
@@ -102,8 +104,8 @@ export default function AIScanner() {
               <div className={styles.iconCircle}>
                 {step.icon}
               </div>
-              <h3 className={styles.stepTitle}>{step.title}</h3>
-              <p className={styles.stepDesc}>{step.desc}</p>
+              <h3 className={styles.stepTitle}><HoverText as="span" type="chars">{step.title}</HoverText></h3>
+              <HoverText as="p" type="words" className={styles.stepDesc}>{step.desc}</HoverText>
             </div>
           ))}
           {/* Connector Line (desktop) — draws itself as a scanning beam travels across */}
@@ -118,7 +120,7 @@ export default function AIScanner() {
         {/* Visual Demo Flow */}
         <div className={styles.demoFlow} ref={demoRef}>
           <div className={`${styles.demoCol} reveal reveal--delay-1`}>
-            <span className={styles.demoLabel}>Toma la foto al albarán</span>
+            <HoverText as="span" type="words" className={styles.demoLabel}>Toma la foto al albarán</HoverText>
             <div className={styles.demoIconWrapper}>
               <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="8" width="18" height="12" rx="2" />
@@ -129,7 +131,7 @@ export default function AIScanner() {
           </div>
 
           <div className={`${styles.demoCol} reveal reveal--delay-2`}>
-            <span className={styles.demoLabel}>La IA hace el proceso</span>
+            <HoverText as="span" type="words" className={styles.demoLabel}>La IA hace el proceso</HoverText>
             <div className={styles.demoIconWrapper}>
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
@@ -138,7 +140,7 @@ export default function AIScanner() {
           </div>
 
           <div className={`${styles.demoCol} reveal reveal--delay-3`}>
-            <span className={styles.demoLabel}>Resultado de la lectura de los datos</span>
+            <HoverText as="span" type="words" className={styles.demoLabel}>Resultado de la lectura de los datos</HoverText>
             <div className={styles.resultCard}>
               <div className={styles.resultHeader}>
                 <h4>Distribuidora Molino Azul</h4>

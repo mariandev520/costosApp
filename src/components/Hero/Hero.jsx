@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef } from 'react';
 import { useMagnetic } from '@/hooks/useMagnetic';
+import HoverText from '@/components/HoverText/HoverText';
 import { gsap, SplitText } from '@/lib/gsap';
 import styles from './Hero.module.css';
 
@@ -35,7 +36,7 @@ export default function Hero() {
     }
 
     const split = new SplitText(el, { type: 'words', wordsClass: 'word' });
-    gsap.set(split.words, { display: 'inline-block' });
+    gsap.set(split.words, { display: 'inline-block', cursor: 'pointer' });
 
     const tween = gsap.from(split.words, {
       opacity: 0,
@@ -48,8 +49,21 @@ export default function Hero() {
       ease: 'back.out(1.8)',
     });
 
+    const handleOver = (e) => {
+      const target = e.target.closest('.word');
+      if (!target || !split.words.includes(target)) return;
+      gsap.killTweensOf(target);
+      gsap
+        .timeline()
+        .to(target, { y: -10, scale: 1.08, color: 'var(--color-text-hover-accent)', duration: 0.22, ease: 'power2.out' })
+        .to(target, { y: 0, scale: 1, clearProps: 'color', duration: 0.4, ease: 'elastic.out(1, 0.5)' });
+    };
+    el.addEventListener('mouseover', handleOver);
+
     return () => {
+      el.removeEventListener('mouseover', handleOver);
       tween.kill();
+      gsap.killTweensOf(split.words);
       split.revert();
     };
   }, []);
@@ -114,24 +128,24 @@ export default function Hero() {
       <div className={`${styles.content} container`}>
         <div className={styles.left}>
           <div className={styles.badge}>
-            <span className={styles.badgeDot}>Nuevo</span>
-            <span>Nuevas funcionalidades para usuarios activos 🔥</span>
+            <span className={styles.badgeDot}><HoverText as="span" type="chars">Nuevo</HoverText></span>
+            <HoverText as="span" type="words">Nuevas funcionalidades para usuarios activos 🔥</HoverText>
           </div>
 
           <h1 id="hero-heading" className={styles.heading} aria-label={HEADLINE}>
             <span ref={headingRef} aria-hidden="true">{HEADLINE}</span>
           </h1>
 
-          <p className={styles.subtitle}>
+          <HoverText as="p" type="words" className={styles.subtitle}>
             Compras, costos, recetas y stock — centralizados y siempre actualizados, para decidir con datos.
-          </p>
+          </HoverText>
 
           <div className={styles.ctas}>
             <a href="#precio" ref={primaryCtaRef} className={styles.ctaPrimary}>
-              Quiero ver una demo
+              <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
             </a>
             <a href="#contacto" ref={secondaryCtaRef} className={styles.ctaSecondary}>
-              Contacto
+              <HoverText as="span" type="chars">Contacto</HoverText>
             </a>
           </div>
         </div>

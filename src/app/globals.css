@@ -67,6 +67,9 @@
   --color-tag-hover-border: #BBBBB9;
   --color-tag-hover-text: #000000;
 
+  /* Colors — Interactive text hover (per-letter/word pointer pop) */
+  --color-text-hover-accent: #318CE7;
+
   /* Typography — Scale (base 16px) */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -192,6 +195,9 @@
 
     /* Border tag */
     --border-tag: 1px solid #D0D0D0;
+
+    /* Interactive text hover */
+    --color-text-hover-accent: #0F5FC2;
   }
 }
 
@@ -491,6 +497,15 @@ body {
   .tilt {
     transform: none !important;
   }
+}
+
+/* ------------------------------------------------------------------
+   9. Interactive Text — per-letter/word pointer pop (useHoverPop)
+   ------------------------------------------------------------------ */
+.hoverPopChar,
+.hoverPopWord {
+  display: inline-block;
+  cursor: pointer;
 }
 
 /* ------------------------------------------------------------------
