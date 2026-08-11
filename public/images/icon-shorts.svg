@@ -1,0 +1,6 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- YouTube Shorts logo shape -->
+  <path d="M48.8 14.2 C43.2 11.0 36.1 13.0 32.9 18.6 L28.5 26.2 C26.7 24.8 24.2 24.0 21.6 24.8 C16.0 26.5 12.8 32.5 14.5 38.1 L17.5 48.0 L13.2 55.4 C10.0 61.0 12.0 68.1 17.6 71.3 C23.2 74.5 30.3 72.5 33.5 66.9 L37.9 59.3 C39.7 60.7 42.2 61.5 44.8 60.7 C50.4 59.0 53.6 53.0 51.9 47.4 L48.9 37.5 L53.2 30.1 C56.4 24.5 54.4 17.4 48.8 14.2 Z" fill="black"/>
+  <!-- Play triangle cut out inside shorts -->
+  <polygon points="34,32 48,40 34,48" fill="white"/>
+</svg>

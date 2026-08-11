@@ -7,23 +7,21 @@ import styles from './WhyCoquinaria.module.css';
 const CARDS_DATA = [
     {
         id: 1,
-        title: 'Precios al día',
-        copy: 'Actualiza costes en segundos con una foto, no a mano y con calculadora.',
+        icon: '/images/icon-reels.svg',
+        title: 'Edición de Reels',
+        copy: 'Ediciones profesionales diseñadas para mejorar el tiempo de visualización y la interacción con el espectador.',
     },
     {
         id: 2,
-        title: 'Protección de márgenes',
-        copy: 'Detecta subidas de precio en ingredientes antes de que afecten a la rentabilidad de tus platos.',
+        icon: '/images/icon-shorts.svg',
+        title: 'Edición de vídeos cortos de YouTube',
+        copy: 'Ediciones dinámicas optimizadas para plataformas de formato corto.',
     },
     {
         id: 3,
-        title: 'Costes reales, no estimados',
-        copy: 'Cada receta muestra su coste actual, margen de beneficio y precio recomendado al instante.',
-    },
-    {
-        id: 4,
-        title: 'Stock sin sorpresas',
-        copy: 'Evita roturas de stock y compras innecesarias sabiendo exactamente qué ingredientes necesitas reposición.',
+        icon: '/images/icon-talking.svg',
+        title: 'Vídeos de personas hablando a cámara',
+        copy: 'Subtítulos, efectos de zoom, transiciones y edición para mantener la atención del público.',
     },
 ];
 
@@ -57,9 +55,9 @@ export default function WhyCoquinaria() {
             <div className="container">
                 {/* Section Header */}
                 <div className={styles.header}>
-                    <p className={styles.subtitle}>¿POR QUÉ COQUINARIA?</p>
+                    <p className={styles.subtitle}>SERVICIOS</p>
                     <h2 className={styles.title}>
-                        Cuatro pilares para transformar la gestión de tu restaurante.
+                        Soluciones audiovisuales diseñadas para impactar.
                     </h2>
                 </div>
 
@@ -78,8 +76,17 @@ export default function WhyCoquinaria() {
                                     zIndex: index + 1,
                                 }}
                             >
-                                <h3 className={styles.cardTitle}>{card.title}</h3>
-                                <p className={styles.cardCopy}>{card.copy}</p>
+                                <div className={styles.iconWrapper}>
+                                    <img
+                                        src={card.icon}
+                                        alt={card.title}
+                                        className={styles.cardIcon}
+                                    />
+                                </div>
+                                <div className={styles.cardContent}>
+                                    <h3 className={styles.cardTitle}>{card.title}</h3>
+                                    <p className={styles.cardCopy}>{card.copy}</p>
+                                </div>
                             </div>
                         );
                     })}
