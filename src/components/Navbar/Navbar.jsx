@@ -122,17 +122,17 @@ export default function Navbar() {
         <div className={styles.ctas}>
           <a
             href="#contacto"
-            className={styles.ctaRegister}
+            className={styles.ctaLogin}
             onClick={(e) => handleSmoothScroll(e, '#contacto')}
           >
-            Registrar
+            Cotizar
           </a>
           <a
             href="#precio"
             className={styles.ctaLogin}
             onClick={(e) => handleSmoothScroll(e, '#precio')}
           >
-            Login
+            Iniciar Sesión
           </a>
         </div>
 
@@ -173,7 +173,7 @@ export default function Navbar() {
         ))}
         <div className={styles.mobileCtas}>
           <a href="#contacto" className={styles.ctaLogin} onClick={(e) => handleSmoothScroll(e, '#contacto')} tabIndex={isMenuOpen ? 0 : -1}>
-            Registrar
+            Cotizar
           </a>
           <a href="#precio" className={styles.ctaLogin} onClick={(e) => handleSmoothScroll(e, '#precio')} tabIndex={isMenuOpen ? 0 : -1}>
             Login

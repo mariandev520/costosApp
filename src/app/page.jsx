@@ -18,7 +18,7 @@ export default function HomePage() {
         <Features />
         <AIScanner />
         <Profitability />
-        <WhyCoquinaria />
+        {/* <WhyCoquinaria /> */}
         <Pricing />
       </main>
       <Footer />
