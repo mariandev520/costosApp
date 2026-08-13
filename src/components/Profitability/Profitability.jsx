@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { useTilt } from '@/hooks/useTilt';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import HoverText from '@/components/HoverText/HoverText';
+import DemoModal from '@/components/DemoModal/DemoModal';
 import { gsap } from '@/lib/gsap';
 import styles from './Profitability.module.css';
 
@@ -12,6 +13,7 @@ export default function Profitability() {
   const dashedRef = useScrollProgress({ property: '--dash-progress' });
   const { ref: tiltRef, onMouseMove: onTiltMove, onMouseLeave: onTiltLeave } = useTilt({ max: 6 });
   const ctaRef = useMagnetic({ strength: 0.4 });
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   const sectionRef = useRef(null);
   const badgeRef = useRef(null);
@@ -118,9 +120,14 @@ export default function Profitability() {
             suma los gastos generales, aplica el IVA y propone el precio de venta y el margen. Si cambia el precio
             de un ingrediente, ves al instante cómo afecta a cada plato.
           </HoverText>
-          <a href="#precio" ref={ctaRef} className={styles.cta}>
+          <button
+            type="button"
+            ref={ctaRef}
+            className={styles.cta}
+            onClick={() => setIsDemoModalOpen(true)}
+          >
             <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
-          </a>
+          </button>
         </div>
 
         {/* Right: Recipe Card Mockup */}
@@ -157,6 +164,10 @@ export default function Profitability() {
         </div>
 
       </div>
+
+      {isDemoModalOpen && (
+        <DemoModal onClose={() => setIsDemoModalOpen(false)} />
+      )}
     </section>
   );
 }

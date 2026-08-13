@@ -102,7 +102,7 @@ export default function Navbar() {
           aria-label="Coquinaria — Volver al inicio"
           onClick={(e) => handleSmoothScroll(e, '#hero')}
         >
-          <HoverText as="span" type="chars" className={styles.logoText}>Coquinaria</HoverText>
+          <HoverText as="span" type="chars" className={styles.logoText}>Costos App</HoverText>
         </a>
 
         {/* Desktop Navigation */}
