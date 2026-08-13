@@ -180,11 +180,30 @@
 }
 
 .demoIconWrapper {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  width: 100%;
+  max-width: 320px;
+  height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 160px;
-  color: #111111;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  overflow: hidden;
+}
+
+.demoIconWrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.demoIconImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* Result Card */

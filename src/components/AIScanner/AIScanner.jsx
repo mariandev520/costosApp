@@ -122,20 +122,22 @@ export default function AIScanner() {
           <div className={`${styles.demoCol} reveal reveal--delay-1`}>
             <HoverText as="span" type="words" className={styles.demoLabel}>Toma la foto al albarán</HoverText>
             <div className={styles.demoIconWrapper}>
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="8" width="18" height="12" rx="2" />
-                <circle cx="12" cy="14" r="3" />
-                <path d="M7 8v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" />
-              </svg>
+              <img
+                src="/images/captura-de-foto.svg"
+                alt="Toma la foto al albarán"
+                className={styles.demoIconImg}
+              />
             </div>
           </div>
 
           <div className={`${styles.demoCol} reveal reveal--delay-2`}>
             <HoverText as="span" type="words" className={styles.demoLabel}>La IA hace el proceso</HoverText>
             <div className={styles.demoIconWrapper}>
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-              </svg>
+              <img
+                src="/images/IA-proceso.svg"
+                alt="La IA hace el proceso"
+                className={styles.demoIconImg}
+              />
             </div>
           </div>
 

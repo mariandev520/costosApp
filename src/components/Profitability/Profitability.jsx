@@ -114,9 +114,9 @@ export default function Profitability() {
             <HoverText as="span" type="words">Sabe qué plato te hace ganar dinero.</HoverText>
           </h2>
           <HoverText as="p" type="words" className={styles.description} ref={descRef}>
-            Añade Los Ingredientes Y Las Cantidades De Una Receta; Coquinaria Calcula El Coste De Materia Prima,
-            Suma Los Gastos Generales, Aplica El IVA Y Propone El Precio De Venta Y El Margen. Si Cambia El Precio
-            De Un Ingrediente, Ves Al Instante Cómo Afecta A Cada Plato.
+            Añade los ingredientes y las cantidades de una receta; Coquinaria calcula el coste de materia prima,
+            suma los gastos generales, aplica el IVA y propone el precio de venta y el margen. Si cambia el precio
+            de un ingrediente, ves al instante cómo afecta a cada plato.
           </HoverText>
           <a href="#precio" ref={ctaRef} className={styles.cta}>
             <HoverText as="span" type="chars">Quiero ver una demo</HoverText>

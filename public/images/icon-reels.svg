@@ -1,0 +1,16 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Instagram Reel icon (rounded square with play symbol) -->
+  <rect x="8" y="24" width="34" height="34" rx="10" stroke="black" stroke-width="3.5" fill="white"/>
+  <polygon points="22,35 34,41 22,47" fill="black"/>
+  <!-- Film line on top of reels icon -->
+  <line x1="8" y1="33" x2="42" y2="33" stroke="black" stroke-width="2.5"/>
+  <line x1="18" y1="24" x2="15" y2="33" stroke="black" stroke-width="2.5"/>
+  <line x1="32" y1="24" x2="29" y2="33" stroke="black" stroke-width="2.5"/>
+
+  <!-- Bookmark tag icon (top right) -->
+  <path d="M44 14 H58 C61 14 62 16 62 18 V46 L53 38 L44 46 Z" fill="black" stroke="black" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Play button icon (bottom middle) -->
+  <path d="M38 46 L58 57 L38 68 Z" fill="black" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M42 51 L52 57 L42 63 Z" fill="white"/>
+</svg>

@@ -123,7 +123,7 @@ export default function Navbar() {
         <div className={styles.ctas}>
           <a
             href="#contacto"
-            className={styles.ctaRegister}
+            className={styles.ctaLogin}
             onClick={(e) => handleSmoothScroll(e, '#contacto')}
           >
             <HoverText as="span" type="chars">Registrar</HoverText>
@@ -133,7 +133,7 @@ export default function Navbar() {
             className={styles.ctaLogin}
             onClick={(e) => handleSmoothScroll(e, '#precio')}
           >
-            <HoverText as="span" type="chars">Login</HoverText>
+            <HoverText as="span" type="chars">Iniciar Sesión</HoverText>
           </a>
         </div>
 
@@ -177,7 +177,7 @@ export default function Navbar() {
             <HoverText as="span" type="chars">Registrar</HoverText>
           </a>
           <a href="#precio" className={styles.ctaLogin} onClick={(e) => handleSmoothScroll(e, '#precio')} tabIndex={isMenuOpen ? 0 : -1}>
-            <HoverText as="span" type="chars">Login</HoverText>
+            <HoverText as="span" type="chars">Iniciar Sesión</HoverText>
           </a>
         </div>
       </nav>

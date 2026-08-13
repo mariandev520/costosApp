@@ -13,11 +13,11 @@
 }
 
 .scrolled {
-  background-color: var(--color-navbar-scrolled-bg);
+  background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 /* Scroll progress bar */
@@ -62,7 +62,7 @@
 .logoText {
   font-size: var(--text-base);
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: #000000;
   letter-spacing: -0.01em;
 }
 
@@ -82,7 +82,7 @@
 .links a {
   font-size: var(--text-sm);
   font-weight: 400;
-  color: var(--color-text-primary);
+  color: #000000;
   text-decoration: none;
   transition: color var(--transition-base);
   position: relative;
@@ -96,7 +96,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-text-primary);
+  background: #000000;
   transition: width var(--transition-base);
 }
 
@@ -132,7 +132,7 @@
 .ctaRegister {
   font-size: var(--text-sm);
   font-weight: 400;
-  color: var(--color-text-primary);
+  color: #000000;
   text-decoration: none;
   opacity: 0.7;
   transition: opacity var(--transition-base);
@@ -146,8 +146,8 @@
 .ctaLogin {
   font-size: var(--text-sm);
   font-weight: 500;
-  color: #000000;
-  background: #ffffff;
+  color: #ffffff;
+  background: #000000;
   text-decoration: none;
   padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-sm);
@@ -155,7 +155,7 @@
 }
 
 .ctaLogin:hover {
-  background: #e0e0e0;
+  background: #222222;
   transform: translateY(-1px);
 }
 
@@ -183,7 +183,7 @@
   display: block;
   width: 100%;
   height: 1.5px;
-  background-color: var(--color-text-primary);
+  background-color: #000000;
   transition: transform var(--transition-base), opacity var(--transition-base);
   transform-origin: center;
 }
@@ -225,7 +225,7 @@
 .mobileMenu a {
   font-size: var(--text-2xl);
   font-weight: 400;
-  color: var(--color-text-primary);
+  color: #000000;
   letter-spacing: var(--tracking-tight);
   transition: color var(--transition-base);
 }
