@@ -6,10 +6,10 @@ import { useScrollSpy } from '@/hooks/useScrollSpy';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
-  { href: '#hero', label: 'Home' },
-  { href: '#funcionalidades', label: 'Features' },
-  { href: '#escaner-ia', label: 'Todo' },
-  { href: '#precio', label: 'Pricing' },
+  // { href: '#hero', label: 'Home' },
+  // { href: '#funcionalidades', label: 'Funcionalidades' },
+  // { href: '#escaner-ia', label: 'Todo' },
+  // { href: '#precio', label: 'Pricing' },
 ];
 
 const SECTION_IDS = ['hero', 'funcionalidades', 'escaner-ia', 'precio'];
@@ -98,10 +98,14 @@ export default function Navbar() {
         <a
           href="#hero"
           className={styles.logo}
-          aria-label="Coquinaria — Volver al inicio"
+          aria-label="Costos.app — Volver al inicio"
           onClick={(e) => handleSmoothScroll(e, '#hero')}
         >
-          <span className={styles.logoText}>Coquinaria</span>
+          <img
+            src="/images/logo-costos.svg"
+            alt="Costos.app Logo"
+            className={styles.logoImg}
+          />
         </a>
 
         {/* Desktop Navigation */}

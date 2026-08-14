@@ -81,6 +81,13 @@
   letter-spacing: -0.01em;
 }
 
+.logoImg {
+  height: 32px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
 .legalLinks {
   display: flex;
   gap: var(--space-6);

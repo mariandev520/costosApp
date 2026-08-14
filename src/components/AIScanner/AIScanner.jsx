@@ -92,7 +92,7 @@ export default function AIScanner() {
     <section id="escaner-ia" className={styles.section}>
       <div className="container">
         <h2 className={styles.title}>
-          Haz una foto al albarán.<br/>La IA hace el resto.
+          Haz una foto a la factura.<br />La IA hace el resto.
         </h2>
 
         {/* Steps Flow */}
@@ -118,11 +118,11 @@ export default function AIScanner() {
         {/* Visual Demo Flow */}
         <div className={styles.demoFlow} ref={demoRef}>
           <div className={`${styles.demoCol} reveal reveal--delay-1`}>
-            <span className={styles.demoLabel}>Toma la foto al albarán</span>
+            <span className={styles.demoLabel}>Toma la foto al factura</span>
             <div className={styles.demoIconWrapper}>
               <img
                 src="/images/captura-de-foto.svg"
-                alt="Toma la foto al albarán"
+                alt="Toma la foto al factura"
                 className={styles.demoIconImg}
               />
             </div>

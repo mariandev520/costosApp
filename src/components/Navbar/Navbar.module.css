@@ -57,6 +57,14 @@
 .logo {
   text-decoration: none;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 
 .logoText {
