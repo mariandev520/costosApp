@@ -27,7 +27,7 @@ export const metadata = {
     'app para restaurantes',
     'gastronomia',
     'gestion de costos',
-    'control de albaranes',
+    'control de facturas',
     'recetas de cocina',
     'márgenes de restaurante',
   ],
