@@ -20,7 +20,7 @@ export default function Footer() {
               <li><a href="#"><HoverText as="span" type="chars">Mobile App</HoverText></a></li>
               <li><a href="#"><HoverText as="span" type="chars">Tasks</HoverText></a></li>
             </ul>
-          </div> */}
+          </div> */
 
           {/* Information column */}
           <div className={`${styles.col} reveal reveal--delay-1`}>
@@ -30,7 +30,7 @@ export default function Footer() {
               <li><a href="#"><HoverText as="span" type="chars">Blog</HoverText></a></li>
               <li><a href="#"><HoverText as="span" type="chars">Support</HoverText></a></li>
             </ul>
-          </div> */}
+          </div> */
 
           {/* Company column */}
           <div className={`${styles.col} reveal reveal--delay-2`}>
@@ -41,7 +41,7 @@ export default function Footer() {
               <li><a href="#"><HoverText as="span" type="chars">Contact us</HoverText></a></li>
               <li><a href="#"><HoverText as="span" type="chars">LOGO</HoverText></a></li>
             </ul>
-          </div> */}
+          </div> */
 
           {/* Social column */}
           <div className={`${styles.col} reveal reveal--delay-3`}>
@@ -51,7 +51,7 @@ export default function Footer() {
               <li><a href="#"><HoverText as="span" type="chars">Instagram</HoverText></a></li>
               <li><a href="#"><HoverText as="span" type="chars">Twitter</HoverText></a></li>
             </ul>
-          </div> */}
+          </div> */
 
         </div>
 
