@@ -36,7 +36,7 @@ export default function Hero() {
     }
 
     const split = new SplitText(el, { type: 'words', wordsClass: 'word' });
-    gsap.set(split.words, { display: 'inline-block', cursor: 'pointer' });
+    gsap.set(split.words, { display: 'inline-block' });
 
     const tween = gsap.from(split.words, {
       opacity: 0,
@@ -49,19 +49,7 @@ export default function Hero() {
       ease: 'back.out(1.8)',
     });
 
-    const handleOver = (e) => {
-      const target = e.target.closest('.word');
-      if (!target || !split.words.includes(target)) return;
-      gsap.killTweensOf(target);
-      gsap
-        .timeline()
-        .to(target, { y: -10, scale: 1.08, color: 'var(--color-text-hover-accent)', duration: 0.22, ease: 'power2.out' })
-        .to(target, { y: 0, scale: 1, clearProps: 'color', duration: 0.4, ease: 'elastic.out(1, 0.5)' });
-    };
-    el.addEventListener('mouseover', handleOver);
-
     return () => {
-      el.removeEventListener('mouseover', handleOver);
       tween.kill();
       gsap.killTweensOf(split.words);
       split.revert();
