@@ -1,7 +1,6 @@
 'use client';
 
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
-import HoverText from '@/components/HoverText/HoverText';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -13,55 +12,69 @@ export default function Footer() {
         <div className={styles.top}>
 
           {/* Product column */}
-          <div className={`${styles.col} reveal`}>
-            <h3 className={styles.colTitle}><HoverText as="span" type="chars">Product</HoverText></h3>
+          {/* <div className={`${styles.col} reveal`}>
+            <h3 className={styles.colTitle}>Product</h3>
             <ul className={styles.navList}>
-              <li><a href="#"><HoverText as="span" type="chars">All Product</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Mobile App</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Tasks</HoverText></a></li>
+              <li><a href="#">All Product</a></li>
+              <li><a href="#">Mobile App</a></li>
+              <li><a href="#">Tasks</a></li>
             </ul>
-          </div> */
+          </div> */}
 
           {/* Information column */}
-          <div className={`${styles.col} reveal reveal--delay-1`}>
-            <h3 className={styles.colTitle}><HoverText as="span" type="chars">Information</HoverText></h3>
+          {/* <div className={`${styles.col} reveal reveal--delay-1`}>
+            <h3 className={styles.colTitle}>Information</h3>
             <ul className={styles.navList}>
-              <li><a href="#"><HoverText as="span" type="chars">FAQ</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Blog</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Support</HoverText></a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Support</a></li>
             </ul>
-          </div> */
+          </div> */}
 
           {/* Company column */}
-          <div className={`${styles.col} reveal reveal--delay-2`}>
-            <h3 className={styles.colTitle}><HoverText as="span" type="chars">Company</HoverText></h3>
+          {/* <div className={`${styles.col} reveal reveal--delay-2`}>
+            <h3 className={styles.colTitle}>Company</h3>
             <ul className={styles.navList}>
-              <li><a href="#"><HoverText as="span" type="chars">About us</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Careers</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Contact us</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">LOGO</HoverText></a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li>
+                <a href="#" aria-label="Costos.app">
+                  <img
+                    src="/images/logo-costos.svg"
+                    alt="Costos.app Logo"
+                    className={styles.logoImg}
+                  />
+                </a>
+              </li>
             </ul>
-          </div> */
+          </div> */}
 
           {/* Social column */}
-          <div className={`${styles.col} reveal reveal--delay-3`}>
-            <h3 className={styles.colTitle}><HoverText as="span" type="chars">Social</HoverText></h3>
+          {/* <div className={`${styles.col} reveal reveal--delay-3`}>
+            <h3 className={styles.colTitle}>Social</h3>
             <ul className={styles.navList}>
-              <li><a href="#"><HoverText as="span" type="chars">Facebook</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Instagram</HoverText></a></li>
-              <li><a href="#"><HoverText as="span" type="chars">Twitter</HoverText></a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Twitter</a></li>
             </ul>
-          </div> */
+          </div> */}
 
         </div>
 
         <div className={styles.bottom}>
-          <div className={styles.logo}><HoverText as="span" type="chars">LOGO</HoverText></div>
+          <div className={styles.logo}>
+            <img
+              src="/images/logo-costos.svg"
+              alt="Costos.app Logo"
+              className={styles.logoImg}
+            />
+          </div>
 
           <div className={styles.legalLinks}>
-            <a href="#"><HoverText as="span" type="chars">Terms</HoverText></a>
-            <a href="#"><HoverText as="span" type="chars">Privacy</HoverText></a>
-            <a href="#"><HoverText as="span" type="chars">Cookies</HoverText></a>
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="#">Cookies</a>
           </div>
 
           <div className={styles.socialIcons}>
