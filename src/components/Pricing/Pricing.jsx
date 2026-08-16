@@ -1,13 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import HoverText from '@/components/HoverText/HoverText';
+import DemoModal from '@/components/DemoModal/DemoModal';
 import styles from './Pricing.module.css';
 
 export default function Pricing() {
   const containerRef = useScrollRevealMultiple();
   const ctaRef = useMagnetic({ strength: 0.4 });
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   return (
     <section id="precio" className={styles.section}>
@@ -51,12 +54,21 @@ export default function Pricing() {
             Define Un Mínimo Y Un Objetivo Para Cada Ingrediente. CostosApp Avisa Qué Está Agotado
             O Por Debajo Del Mínimo, Y Te Dice Cuánto Conviene Pedir.
           </HoverText>
-          <a href="#contacto" ref={ctaRef} className={styles.cta}>
+          <button
+            type="button"
+            ref={ctaRef}
+            className={styles.cta}
+            onClick={() => setIsDemoModalOpen(true)}
+          >
             <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
-          </a>
+          </button>
         </div>
 
       </div>
+
+      {isDemoModalOpen && (
+        <DemoModal onClose={() => setIsDemoModalOpen(false)} />
+      )}
     </section>
   );
 }

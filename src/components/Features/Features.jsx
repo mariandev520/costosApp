@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import HoverText from '@/components/HoverText/HoverText';
+import DemoModal from '@/components/DemoModal/DemoModal';
 import { mergeRefs } from '@/lib/mergeRefs';
 import { gsap } from '@/lib/gsap';
 import styles from './Features.module.css';
@@ -12,6 +13,7 @@ export default function Features() {
   const containerRef1 = useScrollRevealMultiple();
   const containerRef2 = useScrollRevealMultiple();
   const ctaRef = useMagnetic({ strength: 0.4 });
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   const pinRowRef = useRef(null);
   const card1Ref = useRef(null);
@@ -135,9 +137,14 @@ export default function Features() {
             <h2 className={styles.title}>
               <HoverText as="span" type="words">LLevá el control en base a datos.</HoverText>
             </h2>
-            <a href="#precio" ref={ctaRef} className={styles.cta}>
+            <button
+              type="button"
+              ref={ctaRef}
+              className={styles.cta}
+              onClick={() => setIsDemoModalOpen(true)}
+            >
               <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
-            </a>
+            </button>
           </div>
 
           <div className={`${styles.cardsLeft} reveal`}>
@@ -192,6 +199,10 @@ export default function Features() {
         </div>
 
       </div>
+
+      {isDemoModalOpen && (
+        <DemoModal onClose={() => setIsDemoModalOpen(false)} />
+      )}
     </section>
   );
 }

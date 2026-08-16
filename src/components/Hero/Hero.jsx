@@ -1,8 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import HoverText from '@/components/HoverText/HoverText';
+import DemoModal from '@/components/DemoModal/DemoModal';
 import { gsap, SplitText } from '@/lib/gsap';
 import styles from './Hero.module.css';
 
@@ -16,6 +17,7 @@ export default function Hero() {
   const rotateYRef = useRef(null);
   const primaryCtaRef = useMagnetic({ strength: 0.4 });
   const secondaryCtaRef = useMagnetic({ strength: 0.4 });
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -129,9 +131,14 @@ export default function Hero() {
           </HoverText>
 
           <div className={styles.ctas}>
-            <a href="#precio" ref={primaryCtaRef} className={styles.ctaPrimary}>
+            <button
+              type="button"
+              ref={primaryCtaRef}
+              className={styles.ctaPrimary}
+              onClick={() => setIsDemoModalOpen(true)}
+            >
               <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
-            </a>
+            </button>
             <a href="#contacto" ref={secondaryCtaRef} className={styles.ctaSecondary}>
               <HoverText as="span" type="chars">Contacto</HoverText>
             </a>
@@ -149,6 +156,10 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {isDemoModalOpen && (
+        <DemoModal onClose={() => setIsDemoModalOpen(false)} />
+      )}
     </section>
   );
 }
