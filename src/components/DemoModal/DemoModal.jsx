@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './DemoModal.module.css';
 
 const INITIAL_FORM = {
@@ -66,7 +67,7 @@ export default function DemoModal({ onClose }) {
     }
   };
 
-  return (
+  return createPortal(
     <div className={styles.overlay} onMouseDown={handleOverlayClick}>
       <div
         ref={dialogRef}
@@ -182,6 +183,7 @@ export default function DemoModal({ onClose }) {
           </>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -105,6 +105,16 @@ export default function Hero() {
     rotateYRef.current?.(0);
   }, []);
 
+  const handleContactoClick = useCallback((e) => {
+    e.preventDefault();
+    const target = document.querySelector('#contacto');
+    if (!target) return;
+    const navbarEl = document.getElementById('navbar');
+    const navbarHeight = navbarEl ? navbarEl.offsetHeight : 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }, []);
+
   return (
     <section
       id="hero"
@@ -139,7 +149,12 @@ export default function Hero() {
             >
               <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
             </button>
-            <a href="#contacto" ref={secondaryCtaRef} className={styles.ctaSecondary}>
+            <a
+              href="#contacto"
+              ref={secondaryCtaRef}
+              className={styles.ctaSecondary}
+              onClick={handleContactoClick}
+            >
               <HoverText as="span" type="chars">Contacto</HoverText>
             </a>
           </div>
