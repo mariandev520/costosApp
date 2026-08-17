@@ -129,7 +129,7 @@ export default function Navbar() {
             className={styles.ctaLogin}
             onClick={(e) => handleSmoothScroll(e, '#contacto')}
           >
-            Cotizar
+            Probá Costos.app gratis
           </a>
           <a
             href="#precio"

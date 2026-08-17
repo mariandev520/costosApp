@@ -5,7 +5,7 @@ import { useMagnetic } from '@/hooks/useMagnetic';
 import { gsap, SplitText } from '@/lib/gsap';
 import styles from './Hero.module.css';
 
-const HEADLINE = 'Tu cocina, bajo control desde una sola pantalla.';
+const HEADLINE = '¿Sabés cuánto te cuesta realmente cada plato?';
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -123,15 +123,12 @@ export default function Hero() {
           </h1>
 
           <p className={styles.subtitle}>
-            Compras, costos, recetas y stock — centralizados y siempre actualizados, para decidir con datos.
+            Controlá costos, recetas, compras y stock de tu restaurante desde un solo lugar.
           </p>
 
           <div className={styles.ctas}>
             <a href="#precio" ref={primaryCtaRef} className={styles.ctaPrimary}>
-              Quiero ver una demo
-            </a>
-            <a href="#contacto" ref={secondaryCtaRef} className={styles.ctaSecondary}>
-              Contacto
+              Probá Costos.app gratis
             </a>
           </div>
         </div>

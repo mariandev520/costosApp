@@ -118,7 +118,7 @@ export default function Profitability() {
             de un ingrediente, ves al instante cómo afecta a cada plato.
           </p>
           <a href="#precio" ref={ctaRef} className={styles.cta}>
-            Quiero ver una demo
+            Probá Costos.app gratis
           </a>
         </div>
 

@@ -68,7 +68,7 @@ export default function Features() {
   return (
     <section id="funcionalidades" className={styles.section}>
       <div className="container">
-        
+
         {/* Part 1: Text Left, Cards Right */}
         <div className={styles.row} ref={mergeRefs(containerRef1, pinRowRef)}>
           <div className={`${styles.contentLeft} reveal`}>
@@ -76,7 +76,7 @@ export default function Features() {
               Seis áreas de tu negocio, siempre a la vista.
             </h2>
           </div>
-          
+
           <div className={`${styles.cardsRight} reveal reveal--delay-1`}>
             {/* Card 1 */}
             <div ref={card1Ref} className={`${styles.appCard} ${styles.offsetCard1} border-glow`}>
@@ -92,8 +92,8 @@ export default function Features() {
               <div className={styles.cardFooter}>
                 <span className={styles.cardTime}>Today 09:00 PM - 11:45 PM</span>
                 <div className={styles.avatars}>
-                  <div className={styles.avatar} style={{backgroundColor: '#f87171'}} />
-                  <div className={styles.avatar} style={{backgroundColor: '#fbbf24', marginLeft: '-8px'}} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#f87171' }} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#fbbf24', marginLeft: '-8px' }} />
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function Features() {
               <div className={styles.cardFooter}>
                 <span className={styles.cardTime}>Today 08:12 AM</span>
                 <div className={styles.avatars}>
-                  <div className={styles.avatar} style={{backgroundColor: '#60a5fa'}} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#60a5fa' }} />
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@ export default function Features() {
               <div className={styles.cardFooter}>
                 <span className={styles.cardTime}>Today 07:02 AM</span>
                 <div className={styles.avatars}>
-                  <div className={styles.avatar} style={{backgroundColor: '#f87171'}} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#f87171' }} />
                 </div>
               </div>
             </div>
@@ -135,13 +135,13 @@ export default function Features() {
               LLevá el control en base a datos.
             </h2>
             <a href="#precio" ref={ctaRef} className={styles.cta}>
-              Quiero ver una demo
+              Probá Costos.app gratis
             </a>
           </div>
 
           <div className={`${styles.cardsLeft} reveal`}>
-             {/* Card 4 */}
-             <div ref={card4Ref} className={`${styles.appCard} ${styles.offsetCard4} border-glow`}>
+            {/* Card 4 */}
+            <div ref={card4Ref} className={`${styles.appCard} ${styles.offsetCard4} border-glow`}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardTitle}>Informes</span>
                 <div className={styles.checkIcon}>
@@ -154,8 +154,8 @@ export default function Features() {
               <div className={styles.cardFooter}>
                 <span className={styles.cardTime}>Today 09:00 PM - 11:45 PM</span>
                 <div className={styles.avatars}>
-                  <div className={styles.avatar} style={{backgroundColor: '#f87171'}} />
-                  <div className={styles.avatar} style={{backgroundColor: '#fbbf24', marginLeft: '-8px'}} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#f87171' }} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#fbbf24', marginLeft: '-8px' }} />
                 </div>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function Features() {
               <div className={styles.cardFooter}>
                 <span className={styles.cardTime}>Today 08:12 AM</span>
                 <div className={styles.avatars}>
-                  <div className={styles.avatar} style={{backgroundColor: '#f87171'}} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#f87171' }} />
                 </div>
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function Features() {
               <div className={styles.cardFooter}>
                 <span className={styles.cardTime}>Today 07:02 AM</span>
                 <div className={styles.avatars}>
-                  <div className={styles.avatar} style={{backgroundColor: '#f87171'}} />
+                  <div className={styles.avatar} style={{ backgroundColor: '#f87171' }} />
                 </div>
               </div>
             </div>
