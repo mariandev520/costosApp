@@ -93,7 +93,7 @@ export default function Navbar() {
     <>
       <header
         id="navbar"
-        className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}
+        className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${isMenuOpen ? styles.menuActive : ''}`}
         role="banner"
       >
         <a

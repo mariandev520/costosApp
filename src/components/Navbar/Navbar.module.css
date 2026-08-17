@@ -20,6 +20,15 @@
   box-shadow: 0 8px 24px rgba(75, 61, 0, 0.09);
 }
 
+/* iOS Safari renders backdrop-filter as solid black when it's stacked
+   above another fixed, opacity-transitioning layer (the mobile menu).
+   Drop the blur and use a flat background while the menu is open. */
+.scrolled.menuActive {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
 /* Scroll progress bar */
 .progressTrack {
   position: absolute;
@@ -261,6 +270,7 @@
   position: fixed;
   inset: 0;
   z-index: 99;
+  isolation: isolate;
   background-color: #FAFAFA;
   display: flex;
   flex-direction: column;
