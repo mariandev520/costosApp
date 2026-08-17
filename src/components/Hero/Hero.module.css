@@ -63,11 +63,13 @@
   gap: var(--space-2);
   font-size: var(--text-xs);
   color: rgba(0, 0, 0, 0.6);
-  background: rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: var(--radius-full);
   padding: 6px 14px;
   width: fit-content;
+  box-shadow: 0 5px 14px rgba(75, 61, 0, 0.06);
+  backdrop-filter: blur(8px);
 }
 
 .badgeDot {
@@ -125,12 +127,14 @@
   background: #111111;
   border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: background-color var(--transition-base), transform var(--transition-fast);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+  transition: background-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
 }
 
 .ctaPrimary:hover {
   background: #333333;
   transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.18);
 }
 
 .ctaSecondary {
@@ -140,16 +144,19 @@
   font-size: var(--text-sm);
   font-weight: 500;
   color: #111111;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: background-color var(--transition-base), border-color var(--transition-base);
+  box-shadow: 0 5px 14px rgba(75, 61, 0, 0.06);
+  backdrop-filter: blur(8px);
+  transition: background-color var(--transition-base), border-color var(--transition-base), transform var(--transition-fast);
 }
 
 .ctaSecondary:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
 }
 
 /* Right side – Mockup cards */

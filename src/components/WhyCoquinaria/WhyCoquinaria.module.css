@@ -54,23 +54,25 @@
     gap: 1.75rem;
     width: 50%;
     min-height: 160px;
-    background: #ffffff;
-    border: 1.5px solid #dcdcdc;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
     border-radius: 24px;
     padding: 1.75rem 2.25rem;
     color: #111111;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06), 0 3px 10px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 12px 35px rgba(75, 61, 0, 0.07), 0 3px 10px rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
     will-change: transform;
 }
 
 .card:hover {
-    border-color: #b5b5b5;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.1), 0 4px 14px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.16);
+    box-shadow: 0 18px 45px rgba(75, 61, 0, 0.12), 0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
 .cardActive {
-    border-color: #a0a0a0;
+    border-color: rgba(0, 0, 0, 0.22);
 }
 
 .iconWrapper {

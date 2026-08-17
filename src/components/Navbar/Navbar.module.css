@@ -9,15 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background-color var(--transition-base), backdrop-filter var(--transition-base);
+  transition: background-color var(--transition-base), backdrop-filter var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .scrolled {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 24px rgba(75, 61, 0, 0.09);
 }
 
 /* Scroll progress bar */
@@ -55,16 +55,61 @@
 
 /* Logo */
 .logo {
+  position: relative;
   text-decoration: none;
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  border-radius: 10px;
+  isolation: isolate;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), filter 300ms ease;
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsla(52, 100%, 60%, 0.4), transparent 70%);
+  filter: blur(6px);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 350ms ease, transform 350ms ease;
+  pointer-events: none;
 }
 
 .logoImg {
   height: 36px;
   width: auto;
   display: block;
+  transform-origin: center;
+  animation: logoFloat 4.5s ease-in-out infinite, logoGlowPulse 4.5s ease-in-out infinite;
+}
+
+.logo:hover {
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.04);
+}
+
+.logo:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(-1.25deg); }
+}
+
+@keyframes logoGlowPulse {
+  0%, 100% { filter: drop-shadow(0 5px 7px rgba(88, 70, 0, 0.12)); }
+  50% { filter: drop-shadow(0 6px 12px rgba(214, 178, 0, 0.28)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoImg { animation: none; }
+  .logo::before { display: none; }
 }
 
 .logoText {
@@ -159,12 +204,14 @@
   text-decoration: none;
   padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-sm);
-  transition: background-color var(--transition-base), transform var(--transition-fast);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.13);
+  transition: background-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
 }
 
 .ctaLogin:hover {
   background: #222222;
   transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
 }
 
 /* Hamburger */
@@ -214,7 +261,7 @@
   position: fixed;
   inset: 0;
   z-index: 99;
-  background-color: var(--color-bg);
+  background-color: #FAFAFA;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -230,7 +277,7 @@
   pointer-events: all;
 }
 
-.mobileMenu a {
+.mobileMenu > a {
   font-size: var(--text-2xl);
   font-weight: 400;
   color: #000000;
@@ -238,7 +285,7 @@
   transition: color var(--transition-base);
 }
 
-.mobileMenu a:hover {
+.mobileMenu > a:hover {
   color: var(--color-link-hover);
 }
 
