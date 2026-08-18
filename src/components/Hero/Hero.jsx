@@ -7,7 +7,7 @@ import DemoModal from '@/components/DemoModal/DemoModal';
 import { gsap, SplitText } from '@/lib/gsap';
 import styles from './Hero.module.css';
 
-const HEADLINE = 'Tu cocina, bajo control desde una sola pantalla.';
+const HEADLINE = '¿Sabés cuánto te cuesta realmente cada plato?';
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -147,7 +147,7 @@ export default function Hero() {
               className={styles.ctaPrimary}
               onClick={() => setIsDemoModalOpen(true)}
             >
-              <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
+              <HoverText as="span" type="chars">Probá Costos.app gratis</HoverText>
             </button>
             <a
               href="#contacto"

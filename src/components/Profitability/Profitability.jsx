@@ -126,7 +126,7 @@ export default function Profitability() {
             className={styles.cta}
             onClick={() => setIsDemoModalOpen(true)}
           >
-            <HoverText as="span" type="chars">Quiero ver una demo</HoverText>
+            <HoverText as="span" type="chars">Probá Costos.app gratis</HoverText>
           </button>
         </div>
 

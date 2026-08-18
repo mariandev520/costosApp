@@ -93,7 +93,7 @@ export default function AIScanner() {
     <section id="escaner-ia" className={styles.section}>
       <div className="container">
         <h2 className={styles.title}>
-          Haz una foto a la factura.<br />La IA hace el resto.
+          Sacale una foto a la factura.<br />La IA carga los datos por vos.
         </h2>
 
         {/* Steps Flow */}

@@ -14,9 +14,9 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <AIScanner />
         <PainPoints />
         <Features />
-        <AIScanner />
         <Profitability />
         {/* <WhyCoquinaria /> */}
         <Pricing />
