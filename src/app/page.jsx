@@ -4,6 +4,7 @@ import PainPoints from '@/components/PainPoints/PainPoints';
 import Features from '@/components/Features/Features';
 import Testimonial from '@/components/Testimonial/Testimonial';
 import AIScanner from '@/components/AIScanner/AIScanner';
+import AIAgentChat from '@/components/AIAgentChat/AIAgentChat';
 import Profitability from '@/components/Profitability/Profitability';
 import WhyCoquinaria from '@/components/WhyCoquinaria/WhyCoquinaria';
 import Pricing from '@/components/Pricing/Pricing';
@@ -16,6 +17,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <AIScanner />
+        <AIAgentChat />
         <PainPoints />
         <Features />
         <Testimonial />
