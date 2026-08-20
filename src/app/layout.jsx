@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
       <body style={{ fontFamily: 'var(--font-sans), "Helvetica Neue", Arial, sans-serif' }}>
         <BackgroundGlow />
         {children}
-        <WhatsAppButton />
+        {/* <WhatsAppButton /> */}
       </body>
     </html>
   );
