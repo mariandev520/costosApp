@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import Hero from '@/components/Hero/Hero';
 import PainPoints from '@/components/PainPoints/PainPoints';
 import Features from '@/components/Features/Features';
+import Testimonial from '@/components/Testimonial/Testimonial';
 import AIScanner from '@/components/AIScanner/AIScanner';
 import Profitability from '@/components/Profitability/Profitability';
 import WhyCoquinaria from '@/components/WhyCoquinaria/WhyCoquinaria';
@@ -17,6 +18,7 @@ export default function HomePage() {
         <AIScanner />
         <PainPoints />
         <Features />
+        <Testimonial />
         <Profitability />
         {/* <WhyCoquinaria /> */}
         <Pricing />
