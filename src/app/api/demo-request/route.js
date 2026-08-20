@@ -17,7 +17,7 @@ export async function POST(request) {
     );
   }
 
-  const { nombreCompleto, direccion, email, nombreComercio, paginaWeb } = parsed.data;
+  const { nombreCompleto, direccion, pais, email, nombreComercio, paginaWeb } = parsed.data;
 
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
@@ -32,6 +32,7 @@ export async function POST(request) {
     '',
     `*Nombre:* ${nombreCompleto}`,
     `*Dirección:* ${direccion}`,
+    `*País:* ${pais}`,
     `*Email:* ${email}`,
     `*Comercio:* ${nombreComercio}`,
     `*Página web:* ${paginaWeb || '—'}`,
