@@ -20,7 +20,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata = {
-  title: 'Coquinaria app — Tu cocina, bajo control',
+  title: 'Costos App — Tu cocina, bajo control',
   description:
     'Compras, costos, recetas y stock centralizados y siempre actualizados, para decidir con datos.',
   keywords: [
@@ -31,16 +31,16 @@ export const metadata = {
     'recetas de cocina',
     'márgenes de restaurante',
   ],
-  authors: [{ name: 'Coquinaria app' }],
+  authors: [{ name: 'Costos App' }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Coquinaria app — Tu cocina, bajo control',
+    title: 'Costos App — Tu cocina, bajo control',
     description:
       'Tu cocina, bajo control desde una sola pantalla.',
     type: 'website',
     locale: 'es_ES',
     url: 'https://costos-app-pi.vercel.app',
-    siteName: 'Coquinaria App',
+    siteName: 'Costos App',
   },
   metadataBase: new URL('https://costos-app-pi.vercel.app'),
   alternates: {

@@ -2,7 +2,7 @@ export default function OrganizationJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Coquinaria App',
+    name: 'Costos App',
     description:
       'Tu cocina, bajo control desde una sola pantalla. Compras, costos, recetas y stock centralizados.',
     applicationCategory: 'BusinessApplication',
@@ -10,7 +10,7 @@ export default function OrganizationJsonLd() {
     url: 'https://costos-app-pi.vercel.app',
     publisher: {
       '@type': 'Organization',
-      name: 'Coquinaria App',
+      name: 'Costos App',
       url: 'https://costos-app-pi.vercel.app',
     },
     offers: {
