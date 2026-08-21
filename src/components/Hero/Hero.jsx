@@ -147,7 +147,7 @@ export default function Hero() {
               className={styles.ctaPrimary}
               onClick={() => setIsDemoModalOpen(true)}
             >
-              <HoverText as="span" type="chars">Probá Costos.app gratis</HoverText>
+              <HoverText as="span" type="chars">Probá tu demo gratis</HoverText>
             </button>
             <a
               href="#contacto"

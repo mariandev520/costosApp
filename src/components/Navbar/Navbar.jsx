@@ -130,7 +130,7 @@ export default function Navbar() {
             className={styles.ctaLogin}
             onClick={(e) => handleSmoothScroll(e, '#contacto')}
           >
-            <HoverText as="span" type="chars">Probá Costos.app gratis</HoverText>
+            <HoverText as="span" type="chars">Prueba Gratis</HoverText>
           </a>
           <a
             href="#precio"

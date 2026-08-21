@@ -144,7 +144,7 @@ export default function DemoModal({ onClose }) {
         ) : (
           <>
             <p className={styles.kicker}>SOLICITAR DEMO</p>
-            <h3 id="demo-modal-title" className={styles.title}>Quiero ver una demo</h3>
+            <h3 id="demo-modal-title" className={styles.title}>Completa y descarga tu demo</h3>
             <p className={styles.subtitle}>
               Dejanos tus datos y te enviamos el enlace de descarga por email.
             </p>
@@ -196,7 +196,7 @@ export default function DemoModal({ onClose }) {
               </div>
 
               <div className={styles.field} style={{ '--field-index': 3 }}>
-                <label htmlFor="email">Mail personal</label>
+                <label htmlFor="email">Email</label>
                 <input
                   id="email"
                   name="email"
