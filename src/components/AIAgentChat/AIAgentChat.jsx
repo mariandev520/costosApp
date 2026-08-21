@@ -6,7 +6,7 @@ import styles from './AIAgentChat.module.css';
 
 const HIGHLIGHTS = [
   {
-    title: 'Conectado a WhatsApp',
+    title: 'Conectado a WhatsApp o Telegram',
     desc: 'Le escribís por el WhatsApp de siempre, sin instalar ni aprender nada nuevo.',
     icon: (
       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -35,8 +35,8 @@ const HIGHLIGHTS = [
 ];
 
 const CHAT_MESSAGES = [
-  { from: 'user', text: '¿Cuánto stock de harina me queda?' },
-  { from: 'agent', text: 'Te quedan 12kg de Harina 000. Al ritmo de esta semana, alcanza para 4 días.' },
+  { from: 'user', text: '¿Cuánto stock de Coca Cola Zero Lata 250ml me queda?' },
+  { from: 'agent', text: 'Te quedan 12 unidades. Al ritmo de esta semana, alcanza para 4 días.' },
   { from: 'user', text: '¿Subió algo el proveedor este mes?' },
   { from: 'agent', text: 'Sí: Distribuidora Molino Azul subió el aceite de oliva un 6% desde el 12/03.' },
 ];
@@ -49,7 +49,7 @@ export default function AIAgentChat() {
       <div className="container" ref={containerRef}>
         <div className={styles.content}>
           <div className={`${styles.textCol} reveal`}>
-            <HoverText as="p" type="chars" className={styles.subtitle}>AGENTE IA · WHATSAPP</HoverText>
+            <HoverText as="p" type="chars" className={styles.subtitle}>AGENTE IA · WHATSAPP-TELEGRAM</HoverText>
             <h2 className={styles.title}>
               <HoverText as="span" type="words">Preguntale a tu negocio. Te contesta al instante.</HoverText>
             </h2>
