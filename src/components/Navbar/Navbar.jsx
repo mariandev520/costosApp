@@ -4,20 +4,21 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import HoverText from '@/components/HoverText/HoverText';
+import DemoModal from '@/components/DemoModal/DemoModal';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
-  // { href: '#hero', label: 'Home' },
-  // { href: '#funcionalidades', label: 'Funcionalidades' },
-  // { href: '#escaner-ia', label: 'Todo' },
-  // { href: '#precio', label: 'Pricing' },
+  { href: '#caracteristicas', label: 'Características' },
+  { href: '#rentabilidad', label: 'Rentabilidad' },
+  { href: '#precio', label: 'Precio' },
 ];
 
-const SECTION_IDS = ['hero', 'funcionalidades', 'escaner-ia', 'precio'];
+const SECTION_IDS = ['hero', 'caracteristicas', 'rentabilidad', 'precio'];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const activeSection = useScrollSpy(SECTION_IDS);
   const router = useRouter();
   const pathname = usePathname();
@@ -126,18 +127,14 @@ export default function Navbar() {
         {/* Desktop CTAs */}
         <div className={styles.ctas}>
           <a
-            href="#contacto"
+            href="#demo"
             className={styles.ctaLogin}
-            onClick={(e) => handleSmoothScroll(e, '#contacto')}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsDemoModalOpen(true);
+            }}
           >
             <HoverText as="span" type="chars">Prueba Gratis</HoverText>
-          </a>
-          <a
-            href="#precio"
-            className={styles.ctaLogin}
-            onClick={(e) => handleSmoothScroll(e, '#precio')}
-          >
-            <HoverText as="span" type="chars">Iniciar Sesión</HoverText>
           </a>
         </div>
 
@@ -177,14 +174,15 @@ export default function Navbar() {
           </a>
         ))}
         <div className={styles.mobileCtas}>
-          <a href="#contacto" className={styles.ctaLogin} onClick={(e) => handleSmoothScroll(e, '#contacto')} tabIndex={isMenuOpen ? 0 : -1}>
-            <HoverText as="span" type="chars">Registrar</HoverText>
-          </a>
-          <a href="#precio" className={styles.ctaLogin} onClick={(e) => handleSmoothScroll(e, '#precio')} tabIndex={isMenuOpen ? 0 : -1}>
-            <HoverText as="span" type="chars">Iniciar Sesión</HoverText>
+          <a href="#" className={styles.ctaLogin} onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setIsDemoModalOpen(true); }} tabIndex={isMenuOpen ? 0 : -1}>
+            <HoverText as="span" type="chars">Prueba Gratis</HoverText>
           </a>
         </div>
       </nav>
+
+      {isDemoModalOpen && (
+        <DemoModal onClose={() => setIsDemoModalOpen(false)} />
+      )}
     </>
   );
 }
