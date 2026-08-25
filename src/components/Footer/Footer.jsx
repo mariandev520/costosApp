@@ -1,10 +1,33 @@
 'use client';
 
+import { useState, useEffect, useCallback } from 'react';
 import { useScrollRevealMultiple } from '@/hooks/useScrollReveal';
 import styles from './Footer.module.css';
 
 export default function Footer() {
   const containerRef = useScrollRevealMultiple();
+  const [showPrivacy, setShowPrivacy] = useState(false);
+
+  const openPrivacy = (e) => {
+    e.preventDefault();
+    setShowPrivacy(true);
+  };
+
+  const closePrivacy = useCallback(() => {
+    setShowPrivacy(false);
+  }, []);
+
+  // Lock body scroll & close on Escape
+  useEffect(() => {
+    if (!showPrivacy) return;
+    document.body.style.overflow = 'hidden';
+    const handleKey = (e) => { if (e.key === 'Escape') closePrivacy(); };
+    window.addEventListener('keydown', handleKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [showPrivacy, closePrivacy]);
 
   return (
     <footer id="contacto" className={styles.footer} role="contentinfo">
@@ -72,8 +95,7 @@ export default function Footer() {
           </div>
 
           <div className={styles.legalLinks}>
-            <a href="#">Términos y Condiciones</a>
-            <a href="#">Política de privacidad</a>
+            <a href="#" onClick={openPrivacy}>Política de privacidad</a>
             {/* <a href="#">Política de cookies</a> */}
           </div>
 
@@ -90,6 +112,131 @@ export default function Footer() {
           </div> */}
         </div>
       </div>
+
+      {/* Privacy Policy Modal */}
+      {showPrivacy && (
+        <div className={styles.modalOverlay} onClick={closePrivacy}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button
+              className={styles.modalClose}
+              onClick={closePrivacy}
+              aria-label="Cerrar"
+            >
+              ×
+            </button>
+
+            <div className={styles.modalBody}>
+              <h2 className={styles.modalTitle}>POLÍTICA DE PRIVACIDAD DE COSTOS.APP</h2>
+              <p className={styles.modalUpdated}>Última actualización: Agosto de 2026</p>
+
+              <p>En <strong>Costos.app</strong> respetamos tu privacidad y nos comprometemos a proteger los datos personales y comerciales que compartes con nosotros. Esta Política explica cómo recopilamos, utilizamos, almacenamos y protegemos tu información.</p>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>1. RESPONSABLE DEL TRATAMIENTO DE LOS DATOS</h3>
+              <ul>
+                <li><strong>Razón Social:</strong> Costos App</li>
+                <li><strong>Identificación Fiscal (NIF/CIF):</strong> [Número de Identificación]</li>
+                <li><strong>Domicilio:</strong> 11 de Septiembre 3289</li>
+                <li><strong>Correo electrónico de privacidad:</strong> contacto@costos.app</li>
+              </ul>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>2. DATOS QUE RECOPILAMOS</h3>
+              <p>Para la prestación de nuestros servicios recopilamos:</p>
+              <ul>
+                <li><strong>a) Datos de Registro y Contacto:</strong> Nombre, apellidos, correo electrónico, número de teléfono, nombre del comercio.</li>
+                <li><strong>c) Datos de Mensajería (WhatsApp y Telegram):</strong> Número de teléfono vinculado, historial de consultas enviadas al Agente IA y respuestas del sistema.</li>
+                <li><strong>d) Datos Técnicos y de Navegación:</strong> Dirección IP, tipo de dispositivo, navegador, sistema operativo y cookies de sesión.</li>
+              </ul>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>3. FINALIDAD Y BASE JURÍDICA DEL TRATAMIENTO</h3>
+              <div className={styles.modalTableWrapper}>
+                <table className={styles.modalTable}>
+                  <thead>
+                    <tr>
+                      <th>Finalidad del Tratamiento</th>
+                      <th>Base Jurídica</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Prestación del servicio SaaS:</strong> Lectura de facturas mediante OCR, cálculo de costes, recetas, alertas de stock e interacción con el Agente IA.</td>
+                      <td>Ejecución del contrato de servicios (Art. 6.1.b GDPR / Normativa aplicable).</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Gestión de facturación y cobros</strong> de la suscripción.</td>
+                      <td>Ejecución contractual y cumplimiento de obligaciones legales tributarias.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Atención al cliente y soporte técnico.</strong></td>
+                      <td>Ejecución contractual e interés legítimo.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Mejora técnica de los modelos de lectura IA.</strong></td>
+                      <td>Interés legítimo en optimizar la precisión del software.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>4. TRATAMIENTO ESPECIAL DE FACTURAS E INTELIGENCIA ARTIFICIAL</h3>
+              <ul>
+                <li><strong>Lectura OCR:</strong> Las imágenes o PDFs de facturas que subes son procesados de forma automatizada por algoritmos de visión por computador e inteligencia artificial para convertir el texto de la imagen en datos estructurados.</li>
+                <li><strong>Confidencialidad:</strong> Tus documentos, precios y recetas son estrictamente confidenciales. No vendemos ni compartimos la información de tus costes con competidores ni terceros.</li>
+              </ul>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>5. PROVEEDORES Y ENCARGADOS DEL TRATAMIENTO (SUBPROCESADORES)</h3>
+              <p>Para poder operar la Plataforma, compartimos datos mínimos estrictamente necesarios con los siguientes proveedores de infraestructura:</p>
+              <ol>
+                <li><strong>Proveedores de Hosting y Nube:</strong> Almacenamiento seguro de datos, Vercel.</li>
+                <li><strong>Proveedores de Inteligencia Artificial:</strong> Modelos de procesamiento de lenguaje y OCR (ej. OpenAI, Anthropic, Google Vertex AI) para la lectura de documentos y lógica del bot.</li>
+                <li><strong>Plataformas de Mensajería:</strong> Meta Platforms Inc. (API de WhatsApp Business) y Telegram Messenger Inc. cuando utilizas el Agente de IA.</li>
+              </ol>
+              <p>Todos nuestros encargados del tratamiento están sujetos a contratos de confidencialidad y estándares de seguridad equivalentes.</p>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>6. RETENCIÓN DE DATOS</h3>
+              <ul>
+                <li><strong>Durante la suscripción:</strong> Conservaremos tus datos de cuenta y datos operacionales mientras mantengas tu cuenta activa.</li>
+                <li><strong>Tras la cancelación:</strong> Los datos de facturación se conservarán durante los plazos legalmente exigidos por la normativa tributaria (entre 5 y 10 años según la legislación local). Los documentos e imágenes de facturas se eliminarán o anonimizarán en un plazo máximo de 60 días tras la baja.</li>
+              </ul>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>7. TUS DERECHOS</h3>
+              <p>Tienes derecho a:</p>
+              <ul>
+                <li><strong>Acceder</strong> a los datos personales que conservamos sobre ti.</li>
+                <li><strong>Solicitar la rectificación</strong> de datos inexactos.</li>
+                <li><strong>Solicitar la supresión</strong> de tus datos (&quot;derecho al olvido&quot;).</li>
+                <li><strong>Oponerte o limitar</strong> el tratamiento de tus datos en determinados supuestos.</li>
+                <li><strong>Solicitar la portabilidad</strong> de tus datos en un formato estructurado (CSV/JSON).</li>
+                <li><strong>Retirar tu consentimiento</strong> en cualquier momento.</li>
+              </ul>
+              <p>Para ejercitar cualquiera de estos derechos, envía un correo a <strong>privacidad@costos.app</strong> indicando tu solicitud y acreditando tu identidad.</p>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>8. SEGURIDAD DE LA INFORMACIÓN</h3>
+              <p>Implementamos medidas técnicas y organizativas de nivel bancario, incluyendo cifrado SSL/TLS para la transmisión de datos, cifrado en reposo para bases de datos, control de acceso autenticado y copias de seguridad diarias.</p>
+
+              <hr className={styles.modalDivider} />
+
+              <h3>9. CAMBIOS EN LA POLÍTICA DE PRIVACIDAD</h3>
+              <p>Nos reservamos el derecho de actualizar esta Política para reflejar cambios legales o funcionales. Las modificaciones sustanciales serán notificadas a través de la Plataforma o por correo electrónico.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
