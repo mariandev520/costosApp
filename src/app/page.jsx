@@ -8,6 +8,7 @@ import AIAgentChat from '@/components/AIAgentChat/AIAgentChat';
 import Profitability from '@/components/Profitability/Profitability';
 import WhyCoquinaria from '@/components/WhyCoquinaria/WhyCoquinaria';
 import Pricing from '@/components/Pricing/Pricing';
+import TheyTrustUs from '@/components/TheyTrustUs/TheyTrustUs';
 import Footer from '@/components/Footer/Footer';
 
 export default function HomePage() {
@@ -20,6 +21,7 @@ export default function HomePage() {
         <AIAgentChat />
         <PainPoints />
         <Features />
+        <TheyTrustUs />
         <Testimonial />
         <Profitability />
         {/* <WhyCoquinaria /> */}

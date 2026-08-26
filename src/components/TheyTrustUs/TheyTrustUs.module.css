@@ -1,0 +1,139 @@
+/* =============================================================
+   TheyTrustUs — Infinite Logo Carousel
+   ============================================================= */
+
+/* ─── Section ─────────────────────────────────────────────────── */
+.section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  overflow: hidden;
+}
+
+/* ─── Header ──────────────────────────────────────────────────── */
+.headerRow {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.sectionHeading {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0 0 0.5rem;
+}
+
+.sectionSubheading {
+  font-size: var(--text-base);
+  color: #000000;
+  margin: 0;
+}
+
+/* ─── Carousel wrapper ────────────────────────────────────────── */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* ─── Scrolling track ─────────────────────────────────────────── */
+.track {
+  display: flex;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  width: max-content;
+  animation: scroll 25s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover for accessibility */
+.carousel:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate by exactly 50% since we have 4x duplicates (2 full sets visible) */
+    transform: translateX(-50%);
+  }
+}
+
+/* ─── Individual logo item ────────────────────────────────────── */
+.logoItem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.logoItem:hover {
+  opacity: 1;
+}
+
+/* ─── Logo image ──────────────────────────────────────────────── */
+.logo {
+  width: clamp(100px, 12vw, 160px) !important;
+  height: auto !important;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.7);
+  opacity: 0.5;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.logoItem:hover .logo {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+  }
+
+  .track {
+    gap: 2rem;
+    animation-duration: 18s;
+  }
+
+  .logo {
+    width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .track {
+    gap: 1.5rem;
+    animation-duration: 14s;
+  }
+
+  .logo {
+    width: 70px;
+  }
+}
+
+/* ─── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
