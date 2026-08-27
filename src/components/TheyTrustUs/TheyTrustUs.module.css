@@ -80,7 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.75rem;
   transition: opacity 0.3s ease;
 }
 
@@ -90,11 +90,12 @@
 
 /* ─── Logo image ──────────────────────────────────────────────── */
 .logo {
-  width: clamp(100px, 12vw, 160px) !important;
+  width: clamp(160px, 16vw, 230px) !important;
+  max-height: 85px;
   height: auto !important;
   object-fit: contain;
   filter: grayscale(100%) brightness(0.7);
-  opacity: 0.5;
+  opacity: 0.55;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -111,23 +112,33 @@
   }
 
   .track {
-    gap: 2rem;
-    animation-duration: 18s;
+    gap: 3rem;
+    animation-duration: 20s;
+  }
+
+  .logoItem {
+    padding: 0.75rem 1.25rem;
   }
 
   .logo {
-    width: 90px;
+    width: clamp(140px, 25vw, 190px) !important;
+    max-height: 70px;
   }
 }
 
 @media (max-width: 480px) {
   .track {
-    gap: 1.5rem;
-    animation-duration: 14s;
+    gap: 2.25rem;
+    animation-duration: 16s;
+  }
+
+  .logoItem {
+    padding: 0.75rem 1rem;
   }
 
   .logo {
-    width: 70px;
+    width: clamp(150px, 48vw, 200px) !important;
+    max-height: 75px;
   }
 }
 

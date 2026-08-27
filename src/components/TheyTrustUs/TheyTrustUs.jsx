@@ -7,10 +7,10 @@ import styles from './TheyTrustUs.module.css';
 
 /* ─── Logo data ─────────────────────────────────────────────────── */
 const LOGOS = [
-  { src: '/images/logo-coquinaria.webp', alt: 'Coquinaria', width: 160, height: 60 },
-  { src: '/images/logo-criollo.webp',    alt: 'Criollo',    width: 160, height: 60 },
-  { src: '/images/logo-evofit.webp',     alt: 'Evofit',     width: 160, height: 60 },
-  { src: '/images/logo-turemito.webp',   alt: 'Turemito',   width: 160, height: 60 },
+  { src: '/images/logo-coquinaria.webp', alt: 'Coquinaria', width: 240, height: 90 },
+  { src: '/images/logo-criollo.webp',    alt: 'Criollo',    width: 240, height: 90 },
+  { src: '/images/logo-evofit.webp',     alt: 'Evofit',     width: 240, height: 90 },
+  { src: '/images/logo-turemito.webp',   alt: 'Turemito',   width: 240, height: 90 },
 ];
 
 export default function TheyTrustUs() {
