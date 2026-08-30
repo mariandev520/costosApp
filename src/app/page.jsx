@@ -9,6 +9,7 @@ import Profitability from '@/components/Profitability/Profitability';
 import WhyCoquinaria from '@/components/WhyCoquinaria/WhyCoquinaria';
 import Pricing from '@/components/Pricing/Pricing';
 import TheyTrustUs from '@/components/TheyTrustUs/TheyTrustUs';
+import Reels from '@/components/Reels/Reels';
 import Footer from '@/components/Footer/Footer';
 
 export default function HomePage() {
@@ -23,6 +24,7 @@ export default function HomePage() {
         <Features />
         <TheyTrustUs />
         <Testimonial />
+        <Reels />
         <Profitability />
         {/* <WhyCoquinaria /> */}
         <Pricing />
