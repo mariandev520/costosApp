@@ -12,16 +12,16 @@ const REELS = [
     src: 'https://res.cloudinary.com/aerhzjuo/video/upload/v1788034702/Main_oceoh0.mp4',
     title: 'Reel 1',
   },
-  {
-    id: 2,
-    src: 'https://res.cloudinary.com/aerhzjuo/video/upload/v1788034702/Main_oceoh0.mp4',
-    title: 'Reel 2',
-  },
-  {
-    id: 3,
-    src: 'https://res.cloudinary.com/aerhzjuo/video/upload/v1788034702/Main_oceoh0.mp4',
-    title: 'Reel 3',
-  },
+  // {
+  //   id: 2,
+  //   src: 'https://res.cloudinary.com/aerhzjuo/video/upload/v1788034702/Main_oceoh0.mp4',
+  //   title: 'Reel 2',
+  // },
+  // {
+  //   id: 3,
+  //   src: 'https://res.cloudinary.com/aerhzjuo/video/upload/v1788034702/Main_oceoh0.mp4',
+  //   title: 'Reel 3',
+  // },
 ];
 
 /* ─── Play / Pause icon ──────────────────────────────────────────── */
@@ -67,9 +67,7 @@ function ReelCard({ reel }) {
           ref={videoRef}
           className={styles.video}
           src={reel.src}
-          autoPlay
           loop
-          muted
           playsInline
           preload="metadata"
           onEnded={() => setIsPlaying(false)}
@@ -100,7 +98,7 @@ export default function Reels() {
       ref={sectionRef}
       aria-label="Reels"
     >
-      <div className="container">
+      <div className={`container ${styles.container}`}>
         {/* Header */}
         {/* <div className={`${styles.headerRow} reveal`} ref={headingRef}>
           <h2 className={styles.sectionHeading}>
@@ -111,7 +109,7 @@ export default function Reels() {
           </p>
         </div> */}
 
-        {/* Reels grid */}
+        {/* Reels container */}
         <div className={styles.grid}>
           {REELS.map((reel) => (
             <ReelCard key={reel.id} reel={reel} />
